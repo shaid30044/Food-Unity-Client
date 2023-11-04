@@ -9,6 +9,7 @@ export default {
         blue2: "#bfdbfe",
         blue3: "#dbeafe",
         dark1: "#333333",
+        star: "#FF8C47",
       },
     },
   },
