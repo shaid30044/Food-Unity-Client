@@ -1,0 +1,164 @@
+import Lottie from "lottie-react";
+import loginAnimation from "../assets/login.json";
+import Navbar from "../Components/Navbar";
+import { Link, useNavigate } from "react-router-dom";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { MdPassword } from "react-icons/md";
+import { useContext, useState } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Providers/AuthProvider";
+
+const Login = () => {
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+
+  const defaultOptions = {
+    loop: false,
+    autoplay: true,
+    animationData: loginAnimation,
+  };
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const email = form.get("email");
+    const password = form.get("password");
+
+    login(email, password)
+      .then(() => {
+        setTimeout(() => {
+          navigate(location?.state ? location.state : "/");
+        }, 1000);
+
+        Swal.fire({
+          title: "Success!",
+          text: "Sign In successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+      })
+      .catch((error) => {
+        if (error.message === "Invalid email") {
+          Swal.fire({
+            title: "Error!",
+            text: "Invalid email. Please check your email address",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
+        } else if (error.message === "Invalid password") {
+          Swal.fire({
+            title: "Error!",
+            text: "Invalid password. Please check your password",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: "Sign In failed. Please check your credentials.",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
+  return (
+    <div>
+      <div className="z-999">
+        <Navbar />
+      </div>
+      <div className="flex flex-col justify-center h-[90vh]">
+        <div className="lg:grid lg:grid-cols-2 justify-center items-center gap-4 px-4 md:px-10 lg:px-32">
+          {/* lottie animation */}
+
+          <div className="hidden lg:flex flex-col items-center z-10">
+            <Lottie options={defaultOptions} />
+            <div>
+              <Link
+                to="/registration"
+                className="text-lg font-medium text-blue-400 px-12 pt-2 pb-3 underline"
+              >
+                Create an account
+              </Link>
+            </div>
+          </div>
+          {/* login form */}
+
+          <div>
+            <span className="text-4xl font-bold border-b-8 border-blue-400 pb-2">
+              Log In
+            </span>
+            <form onSubmit={handleLogin}>
+              {/* email */}
+
+              <div className="relative border-b-2 border-[#6c6c6c] mt-16 mb-10">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                  <HiOutlineMail />
+                </div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  className="focus:outline-none bg-transparent w-full pl-10 pr-4 py-2"
+                />
+              </div>
+              {/* password */}
+
+              <div className="relative border-b-2 border-[#6c6c6c]">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                  <MdPassword />
+                </div>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Your Password"
+                  required
+                  className="focus:outline-none bg-transparent w-full pl-10 pr-4 py-2"
+                />
+                <div
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-1/2 right-0 -translate-y-1/2 text-xl text-blue-400 cursor-pointer"
+                >
+                  {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                </div>
+              </div>
+              {/* submit button */}
+
+              <input
+                type="submit"
+                value="Submit"
+                className="btn normal-case text-lg font-medium border-2 border-blue-400 hover:border-blue-400 text-blue-400 bg-transparent hover:bg-transparent px-10 mt-10"
+              />
+            </form>
+          </div>
+        </div>
+        <div className="lg:hidden mt-10">
+          <Link
+            to="/registration"
+            className="font-medium text-blue-400 underline px-4 md:px-10"
+          >
+            Create account
+          </Link>
+        </div>
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={handleBack}
+            className="btn normal-case text-lg font-medium border-2 border-blue-400 hover:border-blue-400 text-blue-400 bg-transparent hover:bg-transparent duration-300 px-10 mt-10 lg:mt-0 lg:mb-20"
+          >
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Login;

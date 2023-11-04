@@ -1,0 +1,256 @@
+import Lottie from "lottie-react";
+import registrationAnimation from "../assets/registration.json";
+import Navbar from "../Components/Navbar";
+import { Link, useNavigate } from "react-router-dom";
+import { BiLink, BiUser } from "react-icons/bi";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { HiOutlineMail } from "react-icons/hi";
+import { FaSquareGithub } from "react-icons/fa6";
+import { ImGoogle2 } from "react-icons/im";
+import { MdPassword } from "react-icons/md";
+import { useContext, useState } from "react";
+import Swal from "sweetalert2";
+import { AuthContext } from "../Providers/AuthProvider";
+import { updateProfile } from "firebase/auth";
+
+const Registration = () => {
+  const { createUser, googleLogin, githubLogin } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
+  const [registerError, setRegisterError] = useState("");
+
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: registrationAnimation,
+  };
+
+  const handleRegistration = async (e) => {
+    e.preventDefault();
+    const form = new FormData(e.currentTarget);
+    const name = form.get("name");
+    const email = form.get("email");
+    const password = form.get("password");
+    const photo = form.get("photo");
+
+    try {
+      if (password.length < 6) {
+        throw new Error("Password should be at least 6 characters");
+      }
+
+      if (!/[A-Z]/.test(password)) {
+        throw new Error(
+          "Password should have at least one uppercase character"
+        );
+      }
+
+      if (!/[!@#$%^&*()_+{}\[\]:;<>,.?~\\-]/.test(password)) {
+        throw new Error("Password should have at least one special character");
+      }
+
+      const userCredential = await createUser(email, password);
+
+      await updateProfile(userCredential.user, {
+        displayName: name,
+        photoURL: photo,
+      });
+
+      Swal.fire({
+        title: "Success!",
+        text: "Sign Up successfully",
+        icon: "success",
+        confirmButtonText: "Cool",
+      });
+
+      setTimeout(() => {
+        navigate("/");
+      }, 1000);
+    } catch (error) {
+      setRegisterError(error.message);
+    }
+  };
+
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((res) => {
+        Swal.fire({
+          title: "Success!",
+          text: "Sign Up successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+        console.log(res.user);
+      })
+      .catch((error) => {
+        setRegisterError(error.message);
+      });
+  };
+
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((res) => {
+        Swal.fire({
+          title: "Success!",
+          text: "Sign Up successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+        console.log(res.user);
+      })
+      .catch((error) => {
+        setRegisterError(error.message);
+      });
+  };
+
+  const handleBack = () => {
+    navigate(-1);
+  };
+
+  return (
+    <div>
+      <div>
+        <Navbar />
+      </div>
+      <div className="flex flex-col justify-center py-10">
+        <div className="lg:grid lg:grid-cols-2 justify-center items-center gap-4 px-4 md:px-10 lg:px-32">
+          {/* lottie animation */}
+
+          <div className="hidden lg:flex flex-col items-center">
+            <Lottie options={defaultOptions} />
+            <div>
+              <Link
+                to="/login"
+                className="text-lg font-medium text-blue-400 px-12 pt-2 pb-3 underline"
+              >
+                Login your account
+              </Link>
+            </div>
+          </div>
+          {/* login form */}
+
+          <div>
+            <span className="text-4xl font-bold border-b-8 border-blue-400 pb-2">
+              Registration
+            </span>
+            <form onSubmit={handleRegistration}>
+              {/* name */}
+
+              <div className="relative border-b-2 border-[#6c6c6c] mt-16 mb-10">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                  <BiUser />
+                </div>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  required
+                  className="focus:outline-none bg-transparent w-full pl-10 pr-4 py-2"
+                />
+              </div>
+              {/* email */}
+
+              <div className="relative border-b-2 border-[#6c6c6c] mb-10">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                  <HiOutlineMail />
+                </div>
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  required
+                  className="focus:outline-none bg-transparent w-full pl-10 pr-4 py-2"
+                />
+              </div>
+              {/* password */}
+
+              <div className="relative border-b-2 border-[#6c6c6c]">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                  <MdPassword />
+                </div>
+                <input
+                  type={showPassword ? "text" : "password"}
+                  name="password"
+                  placeholder="Your Password"
+                  required
+                  className="focus:outline-none bg-transparent w-full pl-10 pr-4 py-2"
+                />
+                <div
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute top-1/2 right-0 -translate-y-1/2 text-xl text-blue-400 cursor-pointer"
+                >
+                  {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
+                </div>
+              </div>
+              {/* photo */}
+
+              <div className="relative border-b-2 border-[#6c6c6c] mt-10 mb-10">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                  <BiLink />
+                </div>
+                <input
+                  type="text"
+                  name="photo"
+                  placeholder="Your Photo URL"
+                  required
+                  className="focus:outline-none bg-transparent w-full pl-10 pr-4 py-2"
+                />
+              </div>
+              {/* registration error */}
+
+              <div className="text-center -mb-4">
+                {registerError && (
+                  <p className="text-sm text-red-600">{registerError}</p>
+                )}
+              </div>
+              {/* submit button */}
+
+              <input
+                type="submit"
+                value="Submit"
+                className="btn normal-case text-lg font-medium border-2 border-blue-400 hover:border-blue-400 text-blue-400 bg-transparent hover:bg-transparent px-10 mt-10"
+              />
+            </form>
+            <div className="flex items-center gap-6 mt-10">
+              <h3 className="font-semibold">Or login with</h3>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="text-3xl text-[#ea4335]"
+                >
+                  <ImGoogle2 className="rounded-md" />
+                </button>
+                <button onClick={handleGithubLogin} className="text-[33px]">
+                  <FaSquareGithub className="rounded-lg" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="lg:hidden mt-10">
+          <Link
+            to="/login"
+            className="font-medium text-blue-400 underline px-4 md:px-10"
+          >
+            Login your account
+          </Link>
+        </div>
+        <div className="flex justify-center mt-10">
+          <button
+            onClick={handleBack}
+            className="btn normal-case text-lg font-medium border-2 border-blue-400 hover:border-blue-400 text-blue-400 bg-transparent hover:bg-transparent px-10 mt-4 lg:mt-0"
+          >
+            Back
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Registration;

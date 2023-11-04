@@ -1,0 +1,40 @@
+import { createBrowserRouter } from "react-router-dom";
+import Root from "../Root";
+import Error from "../Pages/Error";
+import Home from "../Pages/Home";
+// import Favorite from "../Pages/Favorite";
+// import Contact from "../Pages/Contact";
+import Login from "../Pages/Login";
+import Registration from "../Pages/Registration";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <Error />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      //   {
+      // path: "/favorite",
+      // element: <Favorite />,
+      //   },
+      //   {
+      // path: "/contact",
+      // element: <Contact />,
+      //   },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/registration",
+        element: <Registration />,
+      },
+    ],
+  },
+]);
+
+export default router;
