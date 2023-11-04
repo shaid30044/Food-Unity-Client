@@ -190,7 +190,7 @@ const Navbar = () => {
           style={{ color: "var(--text-color)" }}
           className="hidden md:block text-2xl font-medium ml-2"
         >
-          Food<span className="t text-blue-500">Unity</span>
+          Food<span className="t text-blue1">Unity</span>
         </Link>
       </div>
       {/* theme and login */}
