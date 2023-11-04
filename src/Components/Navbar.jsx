@@ -3,7 +3,6 @@ import { useContext, useEffect, useState } from "react";
 import sun from "../assets/sun.png";
 import moon from "../assets/moon.png";
 import { BiLogInCircle } from "react-icons/bi";
-import { MdShoppingCart } from "react-icons/md";
 import logo from "../assets/logo.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -142,7 +141,7 @@ const Navbar = () => {
                         isPending
                           ? "pending"
                           : isActive
-                          ? "text-blue-500"
+                          ? "text-blue1"
                           : "text-[#333333]"
                       }
                     >
@@ -167,7 +166,7 @@ const Navbar = () => {
                   isPending
                     ? "pending"
                     : isActive
-                    ? "text-blue-500"
+                    ? "text-blue1"
                     : "text-[#333333]"
                 }
               >
@@ -234,10 +233,10 @@ const Navbar = () => {
             </button>
           ) : (
             <Link to="/login">
-              <button className="md:hidden text-xl text-blue-500 pt-1">
+              <button className="md:hidden text-xl text-blue1 pt-1">
                 <BiLogInCircle />
               </button>
-              <button className="hidden md:block btn normal-case text-base font-medium text-blue-500 border-2 border-blue-400 hover:border-blue-400 bg-transparent hover:bg-transparent rounded-lg duration-300 px-6">
+              <button className="hidden md:block btn normal-case text-base font-medium text-blue1 border-2 border-blue-400 hover:border-blue-400 bg-transparent hover:bg-transparent rounded-lg duration-300 px-6">
                 Log In
               </button>
             </Link>
