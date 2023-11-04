@@ -114,7 +114,7 @@ const Navbar = () => {
   return (
     <div
       style={{ color: "var(--bg-color)" }}
-      className="grid grid-cols-3 items-center bg-blue-100 pl-1 pr-4 md:px-10 lg:px-20 md:py-2 lg:py-3"
+      className="relative grid grid-cols-2 items-center bg-blue-100 pl-1 pr-4 md:px-10 lg:px-10 md:py-2 lg:py-3"
     >
       {/* pages */}
 
@@ -158,7 +158,7 @@ const Navbar = () => {
         </div>
         {/* for lg device */}
 
-        <div className="hidden lg:flex items-center gap-10 font-medium">
+        <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
           {pages.map((page) => (
             <div key={page.id}>
               <NavLink
@@ -179,7 +179,7 @@ const Navbar = () => {
       </div>
       {/* brand logo */}
 
-      <div className="flex justify-center items-center text-[#333333]">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center text-[#333333]">
         <span>
           <Link to="/">
             <img src={logo} className="h-10 md:h-12" />
@@ -193,7 +193,7 @@ const Navbar = () => {
           Food<span className="t text-blue-500">Unity</span>
         </Link>
       </div>
-      {/* theme, cart and login */}
+      {/* theme and login */}
 
       <div className="flex items-center justify-end gap-4 lg:gap-6">
         {/* dark and light toggle */}
