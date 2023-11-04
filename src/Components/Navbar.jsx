@@ -30,22 +30,22 @@ const Navbar = () => {
     {
       id: 2,
       name: "Available Foods",
-      path: "/favorite",
+      path: "/availableFoods",
     },
     {
       id: 3,
       name: "Add Food",
-      path: "/contact",
+      path: "/addFood",
     },
     {
       id: 4,
       name: "Manage My Foods",
-      path: "/contact",
+      path: "/manageMyFoods",
     },
     {
       id: 4,
       name: "My Food Request",
-      path: "/contact",
+      path: "/myFoodRequest",
     },
   ];
 
@@ -158,7 +158,7 @@ const Navbar = () => {
         </div>
         {/* for lg device */}
 
-        <div className="hidden lg:flex items-center gap-6 text-sm font-medium">
+        <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
           {pages.map((page) => (
             <div key={page.id}>
               <NavLink
@@ -216,22 +216,6 @@ const Navbar = () => {
               className="w-4 h-4 lg:w-5 lg:h-5 swap-off"
             />
           </label>
-        </div>
-        {/* cart */}
-
-        <div className="text-xl pt-1">
-          <NavLink
-            to="/cart"
-            className={({ isActive, isPending }) =>
-              isPending
-                ? "pending"
-                : isActive
-                ? "text-blue-500"
-                : "text-[#333333]"
-            }
-          >
-            <MdShoppingCart />
-          </NavLink>
         </div>
 
         {/* login */}
