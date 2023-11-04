@@ -6,6 +6,8 @@ export default {
     extend: {
       colors: {
         blue1: "#3b82f6",
+        blue2: "#bfdbfe",
+        blue3: "#dbeafe",
       },
     },
   },

@@ -113,7 +113,7 @@ const Navbar = () => {
   return (
     <div
       style={{ color: "var(--bg-color)" }}
-      className="relative grid grid-cols-2 items-center bg-blue-100 pl-1 pr-4 md:px-10 lg:px-10 md:py-2 lg:py-3"
+      className="relative grid grid-cols-2 items-center bg-blue3 pl-1 pr-4 md:px-10 lg:px-10 md:py-2 lg:py-3"
     >
       {/* pages */}
 
@@ -129,11 +129,11 @@ const Navbar = () => {
           />
           {toggle ? (
             <div data-aos="fade-in" className="relative">
-              <div className="absolute top-2 md:top-4 left-4 md:left-0 flex flex-col items-center rounded-xl bg-blue-100 font-medium">
+              <div className="absolute top-2 md:top-4 left-4 md:left-0 flex flex-col items-center rounded-xl bg-blue3 font-medium">
                 {pages.map((page) => (
                   <div
                     key={page.id}
-                    className="hover:bg-blue-200 text-center cursor-pointer duration-300 w-full"
+                    className="hover:bg-blue2 text-center cursor-pointer duration-300 w-full"
                   >
                     <NavLink
                       to={page.path}
@@ -236,17 +236,17 @@ const Navbar = () => {
               <button className="md:hidden text-xl text-blue1 pt-1">
                 <BiLogInCircle />
               </button>
-              <button className="hidden md:block btn normal-case text-base font-medium text-blue1 border-2 border-blue-400 hover:border-blue-400 bg-transparent hover:bg-transparent rounded-lg duration-300 px-6">
+              <button className="hidden md:block btn normal-case text-base font-medium text-blue1 border-2 border-blue1 hover:border-blue1 bg-transparent hover:bg-transparent rounded-lg duration-300 px-6">
                 Log In
               </button>
             </Link>
           )}
           {showUserInfo && user && (
             <div data-aos="fade-in" className="relative">
-              <div className="absolute top-3.5 md:top-4 lg:top-5 right-4 md:right-0 flex flex-col items-center rounded-xl bg-blue-100 font-medium">
+              <div className="absolute top-3.5 md:top-4 lg:top-5 right-4 md:right-0 flex flex-col items-center rounded-xl bg-blue3 font-medium">
                 {/* user name and email */}
 
-                <div className="border-b-2 border-blue-400 mb-2">
+                <div className="border-b-2 border-blue1 mb-2">
                   <p className="text-center py-4">{user.displayName}</p>
                   <p className="text-center pb-4">{user.email}</p>
                 </div>
@@ -256,7 +256,7 @@ const Navbar = () => {
                 {others.map((other) => (
                   <div
                     key={other.id}
-                    className="hover:bg-blue-200 text-center cursor-pointer duration-300 w-full"
+                    className="hover:bg-blue2 text-center cursor-pointer duration-300 w-full"
                   >
                     <Link to={other.path}>
                       <button className="px-20 py-4">{other.name}</button>
@@ -268,7 +268,7 @@ const Navbar = () => {
 
                 <button
                   onClick={handleLogout}
-                  className="hover:bg-blue-200 hover:rounded-b-xl duration-300 w-full py-4"
+                  className="hover:bg-blue2 hover:rounded-b-xl duration-300 w-full py-4"
                 >
                   Log Out
                 </button>

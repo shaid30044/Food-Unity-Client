@@ -40,7 +40,7 @@ const icons = [
 const Footer = () => {
   return (
     <footer>
-      <div className="grid lg:grid-cols-2 items-center gap-12 bg-blue-100 px-4 md:px-10 lg:px-20 py-20 lg:py-40">
+      <div className="grid lg:grid-cols-2 items-center gap-12 bg-blue3 px-4 md:px-10 lg:px-20 py-20 lg:py-40">
         <div className="flex flex-col items-center lg:items-start text-[#333333]">
           <span>
             <Link to="/">
@@ -48,7 +48,7 @@ const Footer = () => {
             </Link>
           </span>
           <Link to="/" className="text-3xl lg:text-5xl font-bold">
-            Food<span className="t text-blue-500">Unity</span>
+            Food<span className="t text-blue1">Unity</span>
           </Link>
           <p className="text-lg text-center pt-3">
             Connecting Communities, Reducing Waste
@@ -60,7 +60,7 @@ const Footer = () => {
           ))}
         </div>
       </div>
-      <div className="text-xs font-medium text-center text-[#3c3c3c] bg-blue-200 py-1.5">
+      <div className="text-xs font-medium text-center text-[#3c3c3c] bg-blue2 py-1.5">
         Copyright©2023 - All right reserved
       </div>
     </footer>

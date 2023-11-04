@@ -83,7 +83,7 @@ const Login = () => {
             <div>
               <Link
                 to="/registration"
-                className="text-lg font-medium text-blue-400 px-12 pt-2 pb-3 underline"
+                className="text-lg font-medium text-blue1 px-12 pt-2 pb-3 underline"
               >
                 Create an account
               </Link>
@@ -92,14 +92,14 @@ const Login = () => {
           {/* login form */}
 
           <div>
-            <span className="text-4xl font-bold border-b-8 border-blue-400 pb-2">
+            <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
               Log In
             </span>
             <form onSubmit={handleLogin}>
               {/* email */}
 
               <div className="relative border-b-2 border-[#6c6c6c] mt-16 mb-10">
-                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <HiOutlineMail />
                 </div>
                 <input
@@ -113,7 +113,7 @@ const Login = () => {
               {/* password */}
 
               <div className="relative border-b-2 border-[#6c6c6c]">
-                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <MdPassword />
                 </div>
                 <input
@@ -125,7 +125,7 @@ const Login = () => {
                 />
                 <div
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute top-1/2 right-0 -translate-y-1/2 text-xl text-blue-400 cursor-pointer"
+                  className="absolute top-1/2 right-0 -translate-y-1/2 text-xl text-blue1 cursor-pointer"
                 >
                   {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
                 </div>
@@ -135,7 +135,7 @@ const Login = () => {
               <input
                 type="submit"
                 value="Submit"
-                className="btn normal-case text-lg font-medium border-2 border-blue-400 hover:border-blue-400 text-blue-400 bg-transparent hover:bg-transparent px-10 mt-10"
+                className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-10"
               />
             </form>
           </div>
@@ -143,7 +143,7 @@ const Login = () => {
         <div className="lg:hidden mt-10">
           <Link
             to="/registration"
-            className="font-medium text-blue-400 underline px-4 md:px-10"
+            className="font-medium text-blue1 underline px-4 md:px-10"
           >
             Create account
           </Link>
@@ -151,7 +151,7 @@ const Login = () => {
         <div className="flex justify-center mt-10">
           <button
             onClick={handleBack}
-            className="btn normal-case text-lg font-medium border-2 border-blue-400 hover:border-blue-400 text-blue-400 bg-transparent hover:bg-transparent duration-300 px-10 mt-10 lg:mt-0 lg:mb-20"
+            className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent duration-300 px-10 mt-10 lg:mt-0 lg:mb-20"
           >
             Back
           </button>

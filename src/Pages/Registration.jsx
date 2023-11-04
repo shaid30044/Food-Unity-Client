@@ -126,7 +126,7 @@ const Registration = () => {
             <div>
               <Link
                 to="/login"
-                className="text-lg font-medium text-blue-400 px-12 pt-2 pb-3 underline"
+                className="text-lg font-medium text-blue1 px-12 pt-2 pb-3 underline"
               >
                 Login your account
               </Link>
@@ -135,14 +135,14 @@ const Registration = () => {
           {/* login form */}
 
           <div>
-            <span className="text-4xl font-bold border-b-8 border-blue-400 pb-2">
+            <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
               Registration
             </span>
             <form onSubmit={handleRegistration}>
               {/* name */}
 
               <div className="relative border-b-2 border-[#6c6c6c] mt-16 mb-10">
-                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <BiUser />
                 </div>
                 <input
@@ -156,7 +156,7 @@ const Registration = () => {
               {/* email */}
 
               <div className="relative border-b-2 border-[#6c6c6c] mb-10">
-                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <HiOutlineMail />
                 </div>
                 <input
@@ -170,7 +170,7 @@ const Registration = () => {
               {/* password */}
 
               <div className="relative border-b-2 border-[#6c6c6c]">
-                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <MdPassword />
                 </div>
                 <input
@@ -182,7 +182,7 @@ const Registration = () => {
                 />
                 <div
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute top-1/2 right-0 -translate-y-1/2 text-xl text-blue-400 cursor-pointer"
+                  className="absolute top-1/2 right-0 -translate-y-1/2 text-xl text-blue1 cursor-pointer"
                 >
                   {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
                 </div>
@@ -190,7 +190,7 @@ const Registration = () => {
               {/* photo */}
 
               <div className="relative border-b-2 border-[#6c6c6c] mt-10 mb-10">
-                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue-400">
+                <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <BiLink />
                 </div>
                 <input
@@ -213,7 +213,7 @@ const Registration = () => {
               <input
                 type="submit"
                 value="Submit"
-                className="btn normal-case text-lg font-medium border-2 border-blue-400 hover:border-blue-400 text-blue-400 bg-transparent hover:bg-transparent px-10 mt-10"
+                className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-10"
               />
             </form>
             <div className="flex items-center gap-6 mt-10">
@@ -235,7 +235,7 @@ const Registration = () => {
         <div className="lg:hidden mt-10">
           <Link
             to="/login"
-            className="font-medium text-blue-400 underline px-4 md:px-10"
+            className="font-medium text-blue1 underline px-4 md:px-10"
           >
             Login your account
           </Link>
@@ -243,7 +243,7 @@ const Registration = () => {
         <div className="flex justify-center mt-10">
           <button
             onClick={handleBack}
-            className="btn normal-case text-lg font-medium border-2 border-blue-400 hover:border-blue-400 text-blue-400 bg-transparent hover:bg-transparent px-10 mt-4 lg:mt-0"
+            className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-4 lg:mt-0"
           >
             Back
           </button>
