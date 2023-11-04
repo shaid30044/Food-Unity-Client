@@ -29,12 +29,22 @@ const Navbar = () => {
     },
     {
       id: 2,
-      name: "Favorite",
+      name: "Available Foods",
       path: "/favorite",
     },
     {
       id: 3,
-      name: "Contact",
+      name: "Add Food",
+      path: "/contact",
+    },
+    {
+      id: 4,
+      name: "Manage My Foods",
+      path: "/contact",
+    },
+    {
+      id: 4,
+      name: "My Food Request",
       path: "/contact",
     },
   ];
@@ -136,7 +146,7 @@ const Navbar = () => {
                           : "text-[#333333]"
                       }
                     >
-                      <button className="px-20 py-4">{page.name}</button>
+                      <button className="w-64 py-4">{page.name}</button>
                     </NavLink>
                   </div>
                 ))}
