@@ -41,7 +41,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="grid lg:grid-cols-2 items-center gap-12 bg-blue3 px-4 md:px-10 lg:px-20 py-20 lg:py-40">
-        <div className="flex flex-col items-center lg:items-start text-[#333333]">
+        <div className="flex flex-col items-center lg:items-start text-dark1">
           <span>
             <Link to="/">
               <img src={logo} className="h-16 md:h-20 mb-2" />

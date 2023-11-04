@@ -142,7 +142,7 @@ const Navbar = () => {
                           ? "pending"
                           : isActive
                           ? "text-blue1"
-                          : "text-[#333333]"
+                          : "text-dark1"
                       }
                     >
                       <button className="w-64 py-4">{page.name}</button>
@@ -163,11 +163,7 @@ const Navbar = () => {
               <NavLink
                 to={page.path}
                 className={({ isActive, isPending }) =>
-                  isPending
-                    ? "pending"
-                    : isActive
-                    ? "text-blue1"
-                    : "text-[#333333]"
+                  isPending ? "pending" : isActive ? "text-blue1" : "text-dark1"
                 }
               >
                 {page.name}
@@ -178,7 +174,7 @@ const Navbar = () => {
       </div>
       {/* brand logo */}
 
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center text-[#333333]">
+      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center text-dark1">
         <span>
           <Link to="/">
             <img src={logo} className="h-10 md:h-12" />
