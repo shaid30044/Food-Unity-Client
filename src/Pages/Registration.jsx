@@ -141,7 +141,7 @@ const Registration = () => {
             <form onSubmit={handleRegistration}>
               {/* name */}
 
-              <div className="relative border-b-2 border-[#6c6c6c] mt-16 mb-10">
+              <div className="relative border-b-2 border-dark2 mt-16 mb-10">
                 <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <BiUser />
                 </div>
@@ -155,7 +155,7 @@ const Registration = () => {
               </div>
               {/* email */}
 
-              <div className="relative border-b-2 border-[#6c6c6c] mb-10">
+              <div className="relative border-b-2 border-dark2 mb-10">
                 <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <HiOutlineMail />
                 </div>
@@ -169,7 +169,7 @@ const Registration = () => {
               </div>
               {/* password */}
 
-              <div className="relative border-b-2 border-[#6c6c6c]">
+              <div className="relative border-b-2 border-dark2">
                 <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <MdPassword />
                 </div>
@@ -189,7 +189,7 @@ const Registration = () => {
               </div>
               {/* photo */}
 
-              <div className="relative border-b-2 border-[#6c6c6c] mt-10 mb-10">
+              <div className="relative border-b-2 border-dark2 mt-10 mb-10">
                 <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <BiLink />
                 </div>

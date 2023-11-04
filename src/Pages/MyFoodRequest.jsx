@@ -1,7 +1,7 @@
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 
-const AvailableFoods = () => {
+const MyFoodRequest = () => {
   return (
     <div>
       <Navbar />
@@ -10,4 +10,4 @@ const AvailableFoods = () => {
   );
 };
 
-export default AvailableFoods;
+export default MyFoodRequest;

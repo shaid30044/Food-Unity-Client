@@ -98,7 +98,7 @@ const Login = () => {
             <form onSubmit={handleLogin}>
               {/* email */}
 
-              <div className="relative border-b-2 border-[#6c6c6c] mt-16 mb-10">
+              <div className="relative border-b-2 border-dark2 mt-16 mb-10">
                 <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <HiOutlineMail />
                 </div>
@@ -112,7 +112,7 @@ const Login = () => {
               </div>
               {/* password */}
 
-              <div className="relative border-b-2 border-[#6c6c6c]">
+              <div className="relative border-b-2 border-dark2">
                 <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                   <MdPassword />
                 </div>
