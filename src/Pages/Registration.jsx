@@ -1,4 +1,4 @@
-import Lottie from "lottie-react";
+import Lottie from "react-lottie";
 import registrationAnimation from "../assets/registration.json";
 import Navbar from "../Components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
