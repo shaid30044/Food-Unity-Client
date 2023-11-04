@@ -11,6 +11,9 @@ export default {
         dark1: "#333333",
         star: "#FF8C47",
       },
+      fontFamily: {
+        cabin: ["Cabin", "sans-serif"],
+      },
     },
   },
   plugins: [require("daisyui")],
