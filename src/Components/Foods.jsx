@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { MdOutlineLocationOn, MdAccessTime, MdEditNote } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 const Foods = () => {
@@ -10,7 +9,10 @@ const Foods = () => {
     axios
       .get("https://assignment-11-server-side-chi.vercel.app/foods")
       .then((response) => {
-        setFoods(response.data);
+        const sortedFoods = response.data.sort(
+          (a, b) => b.quantity - a.quantity
+        );
+        setFoods(sortedFoods.slice(0, 6));
       })
       .catch((error) => {
         console.error("Error fetching data:", error);
@@ -25,39 +27,39 @@ const Foods = () => {
       <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:justify-between items-center gap-10 lg:gap-14 mt-20">
         {foods.map((food) => (
           <div key={food._id}>
-            <img
-              src={food.image}
-              className="md:h-52 lg:h-60 w-full rounded-t-xl"
-            />
+            <img src={food.image} className="rounded-t-xl" />
             <div className="bg-blue3 rounded-b-xl p-5">
               <div className="text-dark1">
                 <h3 className="text-2xl font-semibold pb-4">{food.name}</h3>
                 <div className="flex flex-col gap-3 text-blue1">
-                  <div className="flex md:flex-col lg:flex-row gap-10 md:gap-2 lg:gap-20">
-                    <p className="flex items-center gap-2">
-                      Quantity:
-                      <span className="text-dark2">{food.quantity}</span>
-                    </p>
-                    <p className="flex items-center gap-2">
-                      Expired Date/Time:
-                      <span className="text-dark2">{food.time}</span>
-                    </p>
-                  </div>
-                  <p className="flex items-center gap-2">
-                    Location:
-                    <span className="text-dark2 text-sm">{food.location}</span>
+                  <p>
+                    Quantity:
+                    <span className="text-dark2 pl-2">{food.quantity}</span>
                   </p>
-                  <p className="flex items-center gap-2">
+                  <p>
+                    Expired Date/Time:
+                    <span className="text-dark2 pl-2">{food.time}</span>
+                  </p>
+                  <p>
+                    Pickup Location:
+                    <span className="text-dark2 pl-2 text-sm">
+                      {food.location}
+                    </span>
+                  </p>
+                  <p>
                     Additional Notes:
-                    <span className="text-dark2 text-sm">
-                      {food.notes ? food.notes : "N/A"}
+                    <span className="text-dark2 text-sm pl-2">
+                      {food.notes}
                     </span>
                   </p>
                 </div>
               </div>
               <div className="flex justify-between items-center border-t-2 border-blue1 pt-5 mt-4">
-                <div className="flex items-center gap-2">
-                  <img src={food.userImage} className="h-8 w-8 rounded-full" />
+                <div className="flex items-center gap-2 w-1/2">
+                  <img
+                    src={food.userImage}
+                    className="h-10 w-10 rounded-full"
+                  />
                   <p className="text-dark1">{food.userName}</p>
                 </div>
                 <Link>
@@ -70,6 +72,11 @@ const Foods = () => {
           </div>
         ))}
       </div>
+      <Link className="flex justify-center">
+        <button className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-6 mt-16 md:mt-20">
+          Show More
+        </button>
+      </Link>
     </div>
   );
 };

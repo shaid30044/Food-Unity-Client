@@ -140,6 +140,7 @@ const AddFood = () => {
                 type="text"
                 name="notes"
                 id="notes"
+                required
                 placeholder="Additional Notes"
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
               />
