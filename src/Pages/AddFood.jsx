@@ -1,10 +1,12 @@
 import Swal from "sweetalert2";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import axios from "axios";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const AddFood = () => {
+  const { user } = useContext(AuthContext);
   const formRef = useRef(null);
 
   const handleAddFood = async (e) => {
@@ -17,6 +19,10 @@ const AddFood = () => {
     const location = form.get("location");
     const time = form.get("time");
     const notes = form.get("notes");
+    const status = "available";
+    const userImage = user.photoURL;
+    const userName = user.displayName;
+    const userEmail = user.email;
 
     const newFood = {
       name,
@@ -25,6 +31,10 @@ const AddFood = () => {
       location,
       time,
       notes,
+      status,
+      userImage,
+      userName,
+      userEmail,
     };
 
     axios
@@ -41,12 +51,9 @@ const AddFood = () => {
             icon: "success",
             confirmButtonText: "Cool",
           });
+          formRef.current.reset();
         }
       });
-
-    if (formRef.current) {
-      formRef.current.reset();
-    }
   };
 
   return (
@@ -58,6 +65,7 @@ const AddFood = () => {
             Add Food
           </span>
           <form
+            ref={formRef}
             onSubmit={handleAddFood}
             className="grid lg:grid-cols-2 gap-10 lg:gap-16 pt-16"
           >

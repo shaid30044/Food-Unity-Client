@@ -87,6 +87,7 @@ const Login = () => {
         setLoginError(error.message);
       });
   };
+
   const handleGithubLogin = () => {
     githubLogin()
       .then((res) => {
@@ -107,7 +108,7 @@ const Login = () => {
   };
 
   const handleBack = () => {
-    navigate("/");
+    navigate(-1);
   };
 
   return (

@@ -242,7 +242,7 @@ const Navbar = () => {
               <div className="absolute top-3.5 md:top-4 lg:top-5 right-4 md:right-0 flex flex-col items-center rounded-xl bg-blue3 font-medium">
                 {/* user name and email */}
 
-                <div className="border-b-2 text-dark1 border-blue1 mb-2">
+                <div className="border-b-2 text-dark1 border-blue1 mb-2 w-52">
                   <p className="text-center py-4">{user.displayName}</p>
                   <p className="text-center pb-4">{user.email}</p>
                 </div>
