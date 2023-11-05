@@ -113,68 +113,61 @@ const Navbar = () => {
   return (
     <div
       style={{ color: "var(--bg-color)" }}
-      className="relative grid grid-cols-2 items-center bg-blue3 pl-1 pr-4 md:px-10 lg:px-10 md:py-2 lg:py-3"
+      className="relative grid grid-cols-3 lg:grid-cols-5 items-center bg-blue3 pl-1 pr-4 md:px-10 lg:px-20 md:py-2 lg:py-3"
     >
       {/* pages */}
 
-      <div>
-        {/*for sm and md device */}
+      {/*for sm and md device */}
 
-        <div className="lg:hidden">
-          <Hamburger
-            onToggle={handleToggle}
-            rounded
-            size={22}
-            color="#333333"
-          />
-          {toggle ? (
-            <div data-aos="fade-in" className="relative">
-              <div className="absolute top-2 md:top-4 left-4 md:left-0 flex flex-col items-center rounded-xl bg-blue3 font-medium">
-                {pages.map((page) => (
-                  <div
-                    key={page.id}
-                    className="hover:bg-blue2 text-center cursor-pointer duration-300 w-full"
+      <div className="lg:hidden">
+        <Hamburger onToggle={handleToggle} rounded size={22} color="#333333" />
+        {toggle ? (
+          <div data-aos="fade-in" className="relative">
+            <div className="absolute top-2 md:top-4 left-4 md:left-0 flex flex-col items-center rounded-xl bg-blue3 font-medium">
+              {pages.map((page) => (
+                <div
+                  key={page.id}
+                  className="hover:bg-blue2 text-center cursor-pointer duration-300 w-full"
+                >
+                  <NavLink
+                    to={page.path}
+                    className={({ isActive, isPending }) =>
+                      isPending
+                        ? "pending"
+                        : isActive
+                        ? "text-blue1"
+                        : "text-dark1"
+                    }
                   >
-                    <NavLink
-                      to={page.path}
-                      className={({ isActive, isPending }) =>
-                        isPending
-                          ? "pending"
-                          : isActive
-                          ? "text-blue1"
-                          : "text-dark1"
-                      }
-                    >
-                      <button className="w-64 py-4">{page.name}</button>
-                    </NavLink>
-                  </div>
-                ))}
-              </div>
+                    <button className="w-64 py-4">{page.name}</button>
+                  </NavLink>
+                </div>
+              ))}
             </div>
-          ) : (
-            ""
-          )}
-        </div>
-        {/* for lg device */}
+          </div>
+        ) : (
+          ""
+        )}
+      </div>
+      {/* for lg device */}
 
-        <div className="hidden lg:flex items-center gap-8 text-sm font-medium">
-          {pages.map((page) => (
-            <div key={page.id}>
-              <NavLink
-                to={page.path}
-                className={({ isActive, isPending }) =>
-                  isPending ? "pending" : isActive ? "text-blue1" : "text-dark1"
-                }
-              >
-                {page.name}
-              </NavLink>
-            </div>
-          ))}
-        </div>
+      <div className="hidden lg:flex justify-center items-center gap-12 col-span-3 font-medium">
+        {pages.map((page) => (
+          <div key={page.id}>
+            <NavLink
+              to={page.path}
+              className={({ isActive, isPending }) =>
+                isPending ? "pending" : isActive ? "text-blue1" : "text-dark1"
+              }
+            >
+              {page.name}
+            </NavLink>
+          </div>
+        ))}
       </div>
       {/* brand logo */}
 
-      <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex justify-center items-center text-dark1">
+      <div className="flex justify-center lg:justify-start items-center lg:order-first text-dark1">
         <span>
           <Link to="/">
             <img src={logo} className="h-10 md:h-12" />
