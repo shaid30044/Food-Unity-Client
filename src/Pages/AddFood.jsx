@@ -62,7 +62,7 @@ const AddFood = () => {
       <div>
         <div className="px-4 md:px-10 lg:px-20 py-20 lg:py-40">
           <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
-            Add Food
+            Add a Food
           </span>
           <form
             ref={formRef}
@@ -150,7 +150,7 @@ const AddFood = () => {
             <div>
               <input
                 type="submit"
-                value="Submit"
+                value="Add"
                 className="btn normal-case lg:col-span-2 text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-4 m-auto"
               />
             </div>
