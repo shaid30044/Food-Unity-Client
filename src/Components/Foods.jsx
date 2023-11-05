@@ -22,15 +22,18 @@ const Foods = () => {
       <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
         Foods
       </span>
-      <div className="grid grid-cols-3 justify-between items-center gap-14 mt-20">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 lg:justify-between items-center gap-10 lg:gap-14 mt-20">
         {foods.map((food) => (
           <div key={food._id}>
-            <img src={food.image} className="h-60 w-full rounded-t-xl" />
+            <img
+              src={food.image}
+              className="md:h-52 lg:h-60 w-full rounded-t-xl"
+            />
             <div className="bg-blue3 rounded-b-xl p-5">
               <div className="text-dark1">
                 <h3 className="text-2xl font-semibold pb-4">{food.name}</h3>
                 <div className="flex flex-col gap-3 text-blue1">
-                  <div className="flex gap-20">
+                  <div className="flex md:flex-col lg:flex-row gap-10 md:gap-2 lg:gap-20">
                     <p className="flex items-center gap-2">
                       Quantity:
                       <span className="text-dark2">{food.quantity}</span>
