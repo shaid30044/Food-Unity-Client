@@ -74,7 +74,7 @@ const Foods = () => {
       </div>
       <Link className="flex justify-center">
         <button className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-6 mt-16 md:mt-20">
-          Show More
+          Show All
         </button>
       </Link>
     </div>
