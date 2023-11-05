@@ -242,7 +242,7 @@ const Navbar = () => {
               <div className="absolute top-3.5 md:top-4 lg:top-5 right-4 md:right-0 flex flex-col items-center rounded-xl bg-blue3 font-medium">
                 {/* user name and email */}
 
-                <div className="border-b-2 border-blue1 mb-2">
+                <div className="border-b-2 text-dark1 border-blue1 mb-2">
                   <p className="text-center py-4">{user.displayName}</p>
                   <p className="text-center pb-4">{user.email}</p>
                 </div>
@@ -252,10 +252,10 @@ const Navbar = () => {
                 {others.map((other) => (
                   <div
                     key={other.id}
-                    className="hover:bg-blue2 text-center cursor-pointer duration-300 w-full"
+                    className="hover:bg-blue2 text-dark1 text-center cursor-pointer duration-300 w-full"
                   >
                     <Link to={other.path}>
-                      <button className="px-20 py-4">{other.name}</button>
+                      <button className="w-60 py-4">{other.name}</button>
                     </Link>
                   </div>
                 ))}
@@ -264,7 +264,7 @@ const Navbar = () => {
 
                 <button
                   onClick={handleLogout}
-                  className="hover:bg-blue2 hover:rounded-b-xl duration-300 w-full py-4"
+                  className="hover:bg-blue2 hover:rounded-b-xl text-dark1 duration-300 w-full py-4"
                 >
                   Log Out
                 </button>

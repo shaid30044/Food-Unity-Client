@@ -5,8 +5,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { BiLink, BiUser } from "react-icons/bi";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
-import { FaSquareGithub } from "react-icons/fa6";
-import { ImGoogle2 } from "react-icons/im";
 import { MdPassword } from "react-icons/md";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
@@ -14,7 +12,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const Registration = () => {
-  const { createUser, googleLogin, githubLogin } = useContext(AuthContext);
+  const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
   const [registerError, setRegisterError] = useState("");
@@ -68,44 +66,6 @@ const Registration = () => {
     } catch (error) {
       setRegisterError(error.message);
     }
-  };
-
-  const handleGoogleLogin = () => {
-    googleLogin()
-      .then((res) => {
-        Swal.fire({
-          title: "Success!",
-          text: "Sign Up successfully",
-          icon: "success",
-          confirmButtonText: "Cool",
-        });
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-        console.log(res.user);
-      })
-      .catch((error) => {
-        setRegisterError(error.message);
-      });
-  };
-
-  const handleGithubLogin = () => {
-    githubLogin()
-      .then((res) => {
-        Swal.fire({
-          title: "Success!",
-          text: "Sign Up successfully",
-          icon: "success",
-          confirmButtonText: "Cool",
-        });
-        setTimeout(() => {
-          navigate("/");
-        }, 1000);
-        console.log(res.user);
-      })
-      .catch((error) => {
-        setRegisterError(error.message);
-      });
   };
 
   const handleBack = () => {
@@ -216,20 +176,6 @@ const Registration = () => {
                 className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-10"
               />
             </form>
-            <div className="flex items-center gap-6 mt-10">
-              <h3 className="font-semibold">Or login with</h3>
-              <div className="flex items-center gap-4">
-                <button
-                  onClick={handleGoogleLogin}
-                  className="text-3xl text-[#ea4335]"
-                >
-                  <ImGoogle2 className="rounded-md" />
-                </button>
-                <button onClick={handleGithubLogin} className="text-[33px]">
-                  <FaSquareGithub className="rounded-lg" />
-                </button>
-              </div>
-            </div>
           </div>
         </div>
         <div className="lg:hidden mt-10">
@@ -243,7 +189,7 @@ const Registration = () => {
         <div className="flex justify-center mt-10">
           <button
             onClick={handleBack}
-            className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-4 lg:mt-0"
+            className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-4 lg:mt-10"
           >
             Back
           </button>

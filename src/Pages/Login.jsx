@@ -3,6 +3,8 @@ import loginAnimation from "../assets/login.json";
 import Navbar from "../Components/Navbar";
 import { Link, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { FaSquareGithub } from "react-icons/fa6";
+import { ImGoogle2 } from "react-icons/im";
 import { HiOutlineMail } from "react-icons/hi";
 import { MdPassword } from "react-icons/md";
 import { useContext, useState } from "react";
@@ -10,9 +12,11 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
 
 const Login = () => {
-  const { login } = useContext(AuthContext);
+  const { login, googleLogin, githubLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
+  const [loginError, setLoginError] = useState("");
 
   const defaultOptions = {
     loop: false,
@@ -65,8 +69,45 @@ const Login = () => {
       });
   };
 
+  const handleGoogleLogin = () => {
+    googleLogin()
+      .then((res) => {
+        Swal.fire({
+          title: "Success!",
+          text: "Sign Up successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+        console.log(res.user);
+      })
+      .catch((error) => {
+        setLoginError(error.message);
+      });
+  };
+  const handleGithubLogin = () => {
+    githubLogin()
+      .then((res) => {
+        Swal.fire({
+          title: "Success!",
+          text: "Sign Up successfully",
+          icon: "success",
+          confirmButtonText: "Cool",
+        });
+        setTimeout(() => {
+          navigate("/");
+        }, 1000);
+        console.log(res.user);
+      })
+      .catch((error) => {
+        setLoginError(error.message);
+      });
+  };
+
   const handleBack = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   return (
@@ -130,14 +171,37 @@ const Login = () => {
                   {showPassword ? <FaRegEyeSlash /> : <FaRegEye />}
                 </div>
               </div>
+              {/* registration error */}
+
+              <div className="text-center -mb-4">
+                {loginError && (
+                  <p className="text-sm text-red-600">{loginError}</p>
+                )}
+              </div>
               {/* submit button */}
 
               <input
                 type="submit"
                 value="Submit"
-                className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-10"
+                className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-20"
               />
             </form>
+            {/* login with google and github */}
+
+            <div className="flex items-center gap-6 mt-10">
+              <h3 className="font-semibold">Or login with</h3>
+              <div className="flex items-center gap-4">
+                <button
+                  onClick={handleGoogleLogin}
+                  className="text-3xl text-[#ea4335]"
+                >
+                  <ImGoogle2 className="rounded-md" />
+                </button>
+                <button onClick={handleGithubLogin} className="text-[33px]">
+                  <FaSquareGithub className="rounded-lg" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
         <div className="lg:hidden mt-10">
