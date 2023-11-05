@@ -1,9 +1,14 @@
+import Swal from "sweetalert2";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
+import { useRef } from "react";
+import axios from "axios";
 
 const AddFood = () => {
+  const formRef = useRef(null);
+
   const handleAddFood = async (e) => {
-    e.prevent.default;
+    e.preventDefault();
 
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
@@ -21,6 +26,27 @@ const AddFood = () => {
       time,
       notes,
     };
+
+    axios
+      .post("http://localhost:5000/foods", newFood, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then((response) => {
+        if (response.data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Food added successfully",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
+
+    if (formRef.current) {
+      formRef.current.reset();
+    }
   };
 
   return (
@@ -41,6 +67,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="name"
+                id="name"
                 placeholder="Food Name"
                 required
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
@@ -52,6 +79,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="image"
+                id="image"
                 placeholder="Food Image URL"
                 required
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
@@ -64,6 +92,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="quantity"
+                id="quantity"
                 placeholder="Food Quantity"
                 required
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
@@ -76,6 +105,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="location"
+                id="location"
                 placeholder="Food Location"
                 required
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
@@ -88,6 +118,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="time"
+                id="time"
                 placeholder="Expired Date or Time"
                 required
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
@@ -100,6 +131,7 @@ const AddFood = () => {
               <input
                 type="text"
                 name="notes"
+                id="notes"
                 placeholder="Additional Notes"
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
               />
