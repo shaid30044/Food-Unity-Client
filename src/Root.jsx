@@ -4,8 +4,8 @@ import "./Scroll/scrollbar.css";
 
 const Root = () => {
   return (
-    <div className="font-cabin">
-      <div className="sticky top-0">
+    <div className="relative font-cabin">
+      <div className="sticky top-0 z-50">
         <UseScroll />
       </div>
       <div className="-mt-1">
