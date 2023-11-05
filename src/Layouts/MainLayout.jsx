@@ -8,6 +8,7 @@ import AvailableFoods from "../Pages/AvailableFoods";
 import AddFood from "../Pages/AddFood";
 import ManageMyFoods from "../Pages/ManageMyFoods";
 import MyFoodRequest from "../Pages/MyFoodRequest";
+import PrivateRoutes from "../Routes/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/foods"),
+        loader: () =>
+          fetch("https://assignment-11-server-side-chi.vercel.app/foods"),
       },
       {
         path: "/availableFoods",
@@ -26,15 +28,27 @@ const router = createBrowserRouter([
       },
       {
         path: "/addFood",
-        element: <AddFood />,
+        element: (
+          <PrivateRoutes>
+            <AddFood />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/manageMyFoods",
-        element: <ManageMyFoods />,
+        element: (
+          <PrivateRoutes>
+            <ManageMyFoods />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/myFoodRequest",
-        element: <MyFoodRequest />,
+        element: (
+          <PrivateRoutes>
+            <MyFoodRequest />
+          </PrivateRoutes>
+        ),
       },
       {
         path: "/login",

@@ -28,7 +28,7 @@ const AddFood = () => {
     };
 
     axios
-      .post("http://localhost:5000/foods", newFood, {
+      .post("https://assignment-11-server-side-chi.vercel.app/foods", newFood, {
         headers: {
           "Content-Type": "application/json",
         },
