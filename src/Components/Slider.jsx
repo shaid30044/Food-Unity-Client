@@ -51,7 +51,7 @@ const Slider = () => {
           <a
             key={slide.id}
             href={`#slide${index}`}
-            className={`text-[8px] md:text-[10px] ${
+            className={`text-[8px] md:text-[10px] text-white/50 ${
               index === activeSlide ? "active" : ""
             }`}
           >

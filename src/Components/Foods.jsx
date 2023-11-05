@@ -37,14 +37,14 @@ const Foods = () => {
                     <span className="text-dark2 pl-2">{food.quantity}</span>
                   </p>
                   <p>
-                    Expired Date/Time:
-                    <span className="text-dark2 pl-2">{food.time}</span>
-                  </p>
-                  <p>
                     Pickup Location:
                     <span className="text-dark2 pl-2 text-sm">
                       {food.location}
                     </span>
+                  </p>
+                  <p>
+                    Expired Date/Time:
+                    <span className="text-dark2 pl-2">{food.time}</span>
                   </p>
                   <p>
                     Additional Notes:

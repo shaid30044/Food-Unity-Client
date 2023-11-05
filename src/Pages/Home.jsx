@@ -1,4 +1,5 @@
 import AboutUs from "../Components/AboutUs";
+import Contact from "../Components/Contact";
 import Foods from "../Components/Foods";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
@@ -15,6 +16,7 @@ const Home = () => {
       </div>
       <Foods />
       <AboutUs />
+      <Contact />
       <Footer />
     </div>
   );

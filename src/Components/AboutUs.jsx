@@ -9,14 +9,12 @@ const AboutUs = () => {
   };
 
   return (
-    <div className="lg:gap-4 px-4 md:px-10 lg:px-20 pb-20 pt-10 lg:-mt-16 lg:pb-40">
+    <div className="lg:gap-4 px-4 md:px-10 lg:px-20 py-20 pt-10 lg:-mt-16 lg:py-40">
       <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
         About Us
       </span>
       <div className="grid lg:grid-cols-2 items-center lg:gap-10 mt-10">
-        <div className="h-">
-          <Lottie options={defaultOptions} />
-        </div>
+        <Lottie options={defaultOptions} />
         <div className="text-lg text-justify leading-8 pt-10">
           <p className="pb-6">
             <span className="text-xl font-medium ">
