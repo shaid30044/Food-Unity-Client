@@ -28,7 +28,7 @@ const Foods = () => {
         {foods.map((food) => (
           <div key={food._id}>
             <img src={food.image} className="rounded-t-xl" />
-            <div className="bg-blue3 rounded-b-xl p-5">
+            <div className="bg-blue2 rounded-b-xl p-5">
               <div className="text-dark1">
                 <h3 className="text-2xl font-semibold pb-4">{food.name}</h3>
                 <div className="flex flex-col gap-3 text-blue1">
@@ -72,7 +72,7 @@ const Foods = () => {
           </div>
         ))}
       </div>
-      <Link className="flex justify-center">
+      <Link to="/availableFoods" className="flex justify-center">
         <button className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-6 mt-16 md:mt-20">
           Show All
         </button>
