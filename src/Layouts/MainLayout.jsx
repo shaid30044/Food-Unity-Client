@@ -9,6 +9,7 @@ import AddFood from "../Pages/AddFood";
 import ManageMyFoods from "../Pages/ManageMyFoods";
 import MyFoodRequest from "../Pages/MyFoodRequest";
 import PrivateRoutes from "../Routes/PrivateRoute";
+import FoodDetails from "../Pages/FoodDetails";
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,14 @@ const router = createBrowserRouter([
       {
         path: "/availableFoods",
         element: <AvailableFoods />,
+      },
+      {
+        path: "/food/:id",
+        element: <FoodDetails />,
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment-11-server-side-chi.vercel.app/food/${params.id}`
+          ),
       },
       {
         path: "/addFood",

@@ -92,7 +92,7 @@ const AvailableFoods = () => {
                 <input
                   type="submit"
                   value="Search"
-                  className="md:text-lg text-blue1 font-medium border-2 border-blue1 border-l-0 rounded-full rounded-l-none bg-blue2 px-6 md:px-10"
+                  className="md:text-lg text-blue1 font-medium border-2 border-blue1 border-l-0 rounded-full rounded-l-none bg-blue2 cursor-pointer px-6 md:px-10"
                 />
               </form>
             </div>

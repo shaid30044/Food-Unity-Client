@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import AboutUs from "../Components/AboutUs";
 import Contact from "../Components/Contact";
 import Foods from "../Components/Foods";
@@ -6,6 +7,12 @@ import Navbar from "../Components/Navbar";
 import Slider from "../Components/Slider";
 
 const Home = () => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  useEffect(scrollToTop, []);
+
   return (
     <div className="relative">
       <div className="absolute w-full z-50">

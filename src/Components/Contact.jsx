@@ -3,12 +3,28 @@ import contact from "../assets/contact.json";
 import { BiUser } from "react-icons/bi";
 import { HiOutlineMail } from "react-icons/hi";
 import { MdEditNote } from "react-icons/md";
+import { useRef } from "react";
+import Swal from "sweetalert2";
 
 const Contact = () => {
+  const formRef = useRef();
   const defaultOptions = {
     loop: true,
     autoplay: true,
     animationData: contact,
+  };
+
+  const handleContact = (e) => {
+    e.preventDefault();
+
+    Swal.fire({
+      title: "Success!",
+      text: "Your message has been successfully submitted. We will get back to you as soon as possible.",
+      icon: "success",
+      confirmButtonText: "Cool",
+    });
+
+    formRef.current.reset();
   };
 
   return (
@@ -23,14 +39,14 @@ const Contact = () => {
         <div>
           {/* subscription form */}
 
-          <form>
+          <form ref={formRef} onSubmit={handleContact}>
             {/* name */}
             <div className="relative border-b-2 border-dark2 mt-16 mb-10">
               <div className="absolute top-1/2 -translate-y-1/2 text-xl text-blue1">
                 <BiUser />
               </div>
               <input
-                type="email"
+                type="text"
                 name="name"
                 placeholder="Your Name"
                 required
@@ -60,7 +76,7 @@ const Contact = () => {
                 <MdEditNote />
               </div>
               <input
-                type="email"
+                type="text"
                 name="query"
                 placeholder="Your Query"
                 required

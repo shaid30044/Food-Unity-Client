@@ -1,8 +1,17 @@
 import { Link } from "react-router-dom";
 
 const AvailableFood = ({ food }) => {
-  const { image, name, quantity, location, time, notes, userImage, userName } =
-    food;
+  const {
+    _id,
+    image,
+    name,
+    quantity,
+    location,
+    time,
+    notes,
+    userImage,
+    userName,
+  } = food;
 
   return (
     <div>
@@ -34,8 +43,8 @@ const AvailableFood = ({ food }) => {
             <img src={userImage} className="h-10 w-10 rounded-full" />
             <p className="text-dark1">{userName}</p>
           </div>
-          <Link>
-            <button className="btn normal-case text-lg font-medium border-2 border-blue1 hover-border-blue1 text-blue1 bg-transparent hover-bg-transparent px-6">
+          <Link to={`/food/${_id}`}>
+            <button className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-6">
               View Detail
             </button>
           </Link>

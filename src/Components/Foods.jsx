@@ -62,7 +62,7 @@ const Foods = () => {
                   />
                   <p className="text-dark1">{food.userName}</p>
                 </div>
-                <Link>
+                <Link to={`/food/${food._id}`}>
                   <button className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-6">
                     View Detail
                   </button>
