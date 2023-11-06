@@ -2,21 +2,31 @@ import { Link, useLoaderData } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import RequestModal from "../Components/RequestModal";
+import { useEffect } from "react";
 
 const FoodDetails = () => {
   const food = useLoaderData();
 
   const { image, name, quantity, location, time, userName } = food;
 
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  useEffect(scrollToTop, []);
+
   return (
     <div>
       <Navbar />
-      <div className="md:flex justify-cente gap-10 px-4 md:px-10 lg:px-20 py-20 lg:py-40">
-        <img src={image} className="w-full md:w-96 lg:w-[500px] rounded-2xl" />
-        <div className="relative">
+      <div className="lg:flex justify-center gap-10 px-4 md:px-10 lg:px-20 py-20 lg:py-40">
+        <img
+          src={image}
+          className="w-full md:w-[500px] lg:w-[500px] rounded-2xl"
+        />
+        <div className="relative pb-24 lg:pb-0">
           {/* donor information */}
 
-          <div className="border-b-4 border-blue1 space-y-2 pr-60 pb-10 mb-10">
+          <div className="border-b-4 border-blue1 space-y-2 md:pr-60 pb-10 mb-10 mt-10 lg:mt-0">
             <p>
               <span className="font-semibold">Donor Name: </span>
               {userName}

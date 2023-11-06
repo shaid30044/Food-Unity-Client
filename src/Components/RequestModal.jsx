@@ -8,12 +8,22 @@ const RequestModal = ({ food }) => {
 
   const { _id, image, name, location, time, notes, userEmail, userName } = food;
 
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleString("en-US", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    hour12: true,
+  });
+
   const handleRequest = (e) => {
     e.preventDefault();
 
     const form = new FormData(e.currentTarget);
 
-    const requestData = {
+    const requestFood = {
       name: form.get("image"),
       image: form.get("name"),
       donatorEmail: form.get("donatorEmail"),
@@ -29,7 +39,7 @@ const RequestModal = ({ food }) => {
     axios
       .post(
         "https://assignment-11-server-side-chi.vercel.app/foodRequest",
-        requestData,
+        requestFood,
         {
           headers: {
             "Content-Type": "application/json",
@@ -146,7 +156,7 @@ const RequestModal = ({ food }) => {
             type="text"
             name="requestDate"
             id="requestDate"
-            value={""}
+            value={formattedDate}
             readOnly
             className="focus:outline-none bg-transparent w-full px-4 py-2"
           />
