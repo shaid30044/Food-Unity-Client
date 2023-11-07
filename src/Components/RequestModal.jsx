@@ -47,6 +47,9 @@ const RequestModal = ({ food }) => {
       status: status,
     };
 
+    const modal = document.getElementById("modal");
+    modal.close();
+
     axios
       .post(
         "https://assignment-11-server-side-chi.vercel.app/foodRequest",

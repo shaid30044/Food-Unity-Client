@@ -19,10 +19,7 @@ const FoodDetails = () => {
     <div>
       <Navbar />
       <div className="lg:flex justify-center gap-10 px-4 md:px-10 lg:px-20 py-20 lg:py-40">
-        <img
-          src={image}
-          className="w-full md:w-[500px] lg:w-[500px] rounded-2xl"
-        />
+        <img src={image} className="w-full md:w-[500px] rounded-2xl" />
         <div className="relative pb-24 lg:pb-0">
           {/* donor information */}
 

@@ -31,7 +31,7 @@ const MyFoodRequest = () => {
       <div className="absolute top-0 w-full z-50">
         <Navbar />
       </div>
-      <div className="mx-4 md:mx-10 lg:mx-20 pt-32 md:pt-40 mb-20">
+      <div className="overflow-x-auto mx-4 md:mx-10 lg:mx-20 pt-32 md:pt-40 mb-20">
         <span className=" sticky left-0 text-4xl font-bold border-b-8 border-blue1 pb-2">
           My Food Request
         </span>
@@ -44,7 +44,7 @@ const MyFoodRequest = () => {
         ) : (
           // food request
 
-          <table className="overflow-x-auto table table-md lg:table-lg table-pin-rows table-pin-cols mt-20">
+          <table className="table table-md lg:table-lg table-pin-rows table-pin-cols mt-20">
             <thead className="text-[17px]">
               <tr>
                 <th></th>
