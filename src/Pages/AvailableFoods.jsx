@@ -67,7 +67,6 @@ const AvailableFoods = () => {
   return (
     <div>
       <Navbar />
-
       <div>
         {loading ? (
           <Loading />
@@ -123,7 +122,6 @@ const AvailableFoods = () => {
           </div>
         )}
       </div>
-
       <Footer />
     </div>
   );

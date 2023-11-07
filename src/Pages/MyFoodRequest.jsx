@@ -1,61 +1,49 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import axios from "axios";
+import CancelRequest from "../Components/CancelRequest";
+import Lottie from "react-lottie";
+import notFound from "../assets/notFound.json";
+import { useLoaderData } from "react-router-dom";
 
 const MyFoodRequest = () => {
-  const [data, setData] = useState([]);
+  const foodRequest = useLoaderData();
+  const [foods, setFoods] = useState(foodRequest);
 
-  let serialNumber = 1;
-
-  useEffect(() => {
-    axios
-      .get("https://assignment-11-server-side-chi.vercel.app/foodRequest")
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching data:", error);
-      });
-  }, []);
-
-  const handleCancelRequest = (id) => {};
+  const defaultOptions = {
+    loop: true,
+    autoplay: true,
+    animationData: notFound,
+  };
 
   return (
     <div>
       <Navbar />
-      <table>
-        <thead>
-          <tr>
-            <th>Foods No.</th>
-            <th>Donor Name</th>
-            <th>Pickup Location</th>
-            <th>Expire Date</th>
-            <th>Request Date</th>
-            <th>Your Donation Amount</th>
-            <th>Status</th>
-            <th>Cancel Request</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item) => (
-            <tr key={item.id}>
-              <td>{serialNumber++}</td>
-              <td>{item.donatorName}</td>
-              <td>{item.location}</td>
-              <td>{item.time}</td>
-              <td>{item.requestDate}</td>
-              <td>{item.donationMoney}</td>
-              <td>{item?.status}</td>
-              <td>
-                <button onClick={() => handleCancelRequest(item.id)}>
-                  Cancel
-                </button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="px-4 md:px-10 lg:px-20 py-20 lg:py-40">
+        <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
+          My Food Request
+        </span>
+        {!foods.length ? (
+          <div>
+            <div className="md:col-span-2 lg:col-span-3 h-[400px] mt-10 -mb-20">
+              <Lottie options={defaultOptions} />
+            </div>
+          </div>
+        ) : (
+          // food request
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-14 mt-32">
+            {foods.map((food, idx) => (
+              <CancelRequest
+                key={idx}
+                food={food}
+                foods={foods}
+                setFoods={setFoods}
+              />
+            ))}
+          </div>
+        )}
+      </div>
       <Footer />
     </div>
   );

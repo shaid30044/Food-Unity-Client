@@ -6,7 +6,17 @@ import Swal from "sweetalert2";
 const RequestModal = ({ food }) => {
   const { user } = useContext(AuthContext);
 
-  const { _id, image, name, location, time, notes, userEmail, userName } = food;
+  const {
+    _id,
+    image,
+    name,
+    location,
+    time,
+    notes,
+    userEmail,
+    userName,
+    status,
+  } = food;
 
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleString("en-US", {
@@ -24,8 +34,8 @@ const RequestModal = ({ food }) => {
     const form = new FormData(e.currentTarget);
 
     const requestFood = {
-      name: form.get("image"),
-      image: form.get("name"),
+      name: form.get("name"),
+      image: form.get("image"),
       donatorEmail: form.get("donatorEmail"),
       donatorName: form.get("donatorName"),
       userEmail: form.get("userEmail"),
@@ -34,6 +44,7 @@ const RequestModal = ({ food }) => {
       notes: form.get("notes"),
       requestDate: form.get("requestDate"),
       donationMoney: form.get("donationMoney"),
+      status: status,
     };
 
     axios
@@ -212,7 +223,6 @@ const RequestModal = ({ food }) => {
             type="text"
             name="donationMoney"
             id="donationMoney"
-            defaultValue={"Donation Money"}
             placeholder="Donation Money"
             className="focus:outline-none bg-transparent w-full px-4 py-2"
           />

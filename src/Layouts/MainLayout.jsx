@@ -60,6 +60,8 @@ const router = createBrowserRouter([
             <MyFoodRequest />
           </PrivateRoutes>
         ),
+        loader: () =>
+          fetch("https://assignment-11-server-side-chi.vercel.app/foodRequest"),
       },
       {
         path: "/login",
