@@ -1,5 +1,6 @@
 import axios from "axios";
 import Swal from "sweetalert2";
+import { MdOutlineCancel } from "react-icons/md";
 
 const CancelRequest = ({ food, foods, setFoods }) => {
   const {
@@ -44,51 +45,25 @@ const CancelRequest = ({ food, foods, setFoods }) => {
   };
 
   return (
-    <div className="relative">
-      <div className="absolute -top-8 right-0 border-2 border-blue1 rounded-full flex justify-center items-center text-3xl font-semibold h-16 w-16">
-        {count}
-      </div>
+    <tr className="font-medium">
+      <th>{count}</th>
+      <td>{donatorName}</td>
+      <td>{location}</td>
+      <td>{time}</td>
+      <td>{requestDate}</td>
+      <td>{donationMoney}</td>
+      <td>{status}</td>
 
-      {/* information */}
-
-      <div className="flex flex-col gap-4">
-        <p>
-          <span className="text-blue1">Donar: </span>
-          {donatorName}
-        </p>
-        <p>
-          <span className="text-blue1">Pickup Location: </span>
-          {location}
-        </p>
-        <p>
-          <span className="text-blue1">Expired Date: </span>
-          {time}
-        </p>
-        <p>
-          <span className="text-blue1">Request Date: </span>
-          {requestDate}
-        </p>
-        <p>
-          <span className="text-blue1">Your Donation Amount: </span>$
-          {donationMoney}
-        </p>
-        <p>
-          <span className="text-blue1">Status: </span>
-          {status}
-        </p>
-
-        {/* cancel request button */}
-
-        <div className="border-t-2 border- pt-2 mt-2">
-          <button
-            onClick={() => handleCancelRequest(_id)}
-            className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-4"
-          >
-            Cancel Request
-          </button>
-        </div>
-      </div>
-    </div>
+      {/* delete action */}
+      <td className="relative">
+        <button
+          onClick={() => handleCancelRequest(_id)}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg rounded-full hover:bg-blue1/60 duration-300 p-3"
+        >
+          <MdOutlineCancel />
+        </button>
+      </td>
+    </tr>
   );
 };
 

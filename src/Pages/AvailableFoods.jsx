@@ -108,14 +108,14 @@ const AvailableFoods = () => {
               ) : searchResults.length > 0 ? (
                 // search foods
 
-                searchResults.map((food) => (
-                  <AvailableFood key={food.id} food={food}></AvailableFood>
+                searchResults.map((food, idx) => (
+                  <AvailableFood key={idx} food={food}></AvailableFood>
                 ))
               ) : (
                 // all foods
 
-                foods.map((food) => (
-                  <AvailableFood key={food.id} food={food}></AvailableFood>
+                foods.map((food, idx) => (
+                  <AvailableFood key={idx} food={food}></AvailableFood>
                 ))
               )}
             </div>

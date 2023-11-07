@@ -27,31 +27,48 @@ const MyFoodRequest = () => {
   };
 
   return (
-    <div>
-      <Navbar />
-      <div className="px-4 md:px-10 lg:px-20 py-20 lg:py-40">
-        <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
+    <div className="relative">
+      <div className="absolute top-0 w-full z-50">
+        <Navbar />
+      </div>
+      <div className="mx-4 md:mx-10 lg:mx-20 pt-32 md:pt-40 mb-20">
+        <span className=" sticky left-0 text-4xl font-bold border-b-8 border-blue1 pb-2">
           My Food Request
         </span>
         {!foods.length ? (
           <div>
-            <div className="md:col-span-2 lg:col-span-3 h-[400px] mt-10 -mb-20">
+            <div className="h-[400px] mt-10 -mb-20">
               <Lottie options={defaultOptions} />
             </div>
           </div>
         ) : (
           // food request
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-14 mt-32">
-            {foods.map((food, idx) => (
-              <CancelRequest
-                key={idx}
-                food={food}
-                foods={foods}
-                setFoods={setFoods}
-              />
-            ))}
-          </div>
+          <table className="overflow-x-auto table table-md lg:table-lg table-pin-rows table-pin-cols mt-20">
+            <thead className="text-[17px]">
+              <tr>
+                <th></th>
+                <td>Donator Name</td>
+                <td>Pickup Location</td>
+                <td>Expired Date</td>
+                <td>Request Date</td>
+                <td>Your Donation Amount</td>
+                <td>Status</td>
+                <td className="text-center">Cancel Request</td>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              {foods.map((food, idx) => (
+                <CancelRequest
+                  key={idx}
+                  food={food}
+                  foods={foods}
+                  setFoods={setFoods}
+                ></CancelRequest>
+              ))}
+            </tbody>
+          </table>
         )}
       </div>
       <Footer />
