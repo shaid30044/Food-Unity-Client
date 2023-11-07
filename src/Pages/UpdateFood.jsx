@@ -1,57 +1,49 @@
-import Swal from "sweetalert2";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import { useContext, useRef } from "react";
-import axios from "axios";
-import { AuthContext } from "../Providers/AuthProvider";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
-const AddFood = () => {
-  const { user } = useContext(AuthContext);
-  const formRef = useRef(null);
+const UpdateFood = () => {
+  const food = useLoaderData();
+  const navigate = useNavigate();
 
-  const handleAddFood = async (e) => {
+  const { _id, name, image, location, time, notes } = food;
+
+  const handleUpdateFood = async (e) => {
     e.preventDefault();
 
     const form = new FormData(e.currentTarget);
     const name = form.get("name");
     const image = form.get("image");
-    const quantity = form.get("quantity");
     const location = form.get("location");
     const time = form.get("time");
     const notes = form.get("notes");
-    const status = "available";
-    const userImage = user.photoURL;
-    const userName = user.displayName;
-    const userEmail = user.email;
 
-    const newFood = {
+    const updateFood = {
       name,
       image,
-      quantity,
       location,
       time,
       notes,
-      status,
-      userImage,
-      userName,
-      userEmail,
     };
 
-    axios
-      .post("https://assignment-11-server-side-chi.vercel.app/foods", newFood, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then((response) => {
-        if (response.data.insertedId) {
+    fetch(`https://assignment-11-server-side-chi.vercel.app/food/${food._id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateFood),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
           Swal.fire({
             title: "Success!",
-            text: "Food added successfully",
+            text: "Product updated successfully",
             icon: "success",
             confirmButtonText: "Cool",
           });
-          formRef.current.reset();
+          navigate(-1);
         }
       });
   };
@@ -62,49 +54,38 @@ const AddFood = () => {
       <div>
         <div className="px-4 md:px-10 lg:px-20 py-20 lg:py-40">
           <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
-            Add a Food
+            Update Food
           </span>
 
-          {/* add food form */}
+          {/* update food form */}
 
           <form
-            ref={formRef}
-            onSubmit={handleAddFood}
+            onSubmit={handleUpdateFood}
             className="grid lg:grid-cols-2 gap-10 lg:gap-16 pt-16"
           >
             {/* food name */}
 
             <div className="border-b-2 border-dark2">
+              <p className="text-lg text-blue1">Food Name</p>
               <input
                 type="text"
                 name="name"
                 id="name"
-                placeholder="Food Name"
+                defaultValue={name}
                 required
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
               />
             </div>
 
             {/* food image */}
+
             <div className="border-b-2 border-dark2">
+              <p className="text-lg text-blue1">Food Image ULR</p>
               <input
                 type="text"
                 name="image"
                 id="image"
-                placeholder="Food Image URL"
-                required
-                className="focus:outline-none bg-transparent w-full px-4 py-2"
-              />
-            </div>
-
-            {/*food quantity */}
-
-            <div className="border-b-2 border-dark2">
-              <input
-                type="text"
-                name="quantity"
-                id="quantity"
-                placeholder="Food Quantity"
+                defaultValue={image}
                 required
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
               />
@@ -113,11 +94,12 @@ const AddFood = () => {
             {/*food location */}
 
             <div className="border-b-2 border-dark2">
+              <p className="text-lg text-blue1">Food Pickup Location</p>
               <input
                 type="text"
                 name="location"
                 id="location"
-                placeholder="Food Pickup Location"
+                defaultValue={location}
                 required
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
               />
@@ -126,11 +108,12 @@ const AddFood = () => {
             {/*expired time */}
 
             <div className="border-b-2 border-dark2">
+              <p className="text-lg text-blue1">Expired Date/time</p>
               <input
                 type="text"
                 name="time"
                 id="time"
-                placeholder="Expired Date or Time"
+                defaultValue={time}
                 required
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
               />
@@ -139,12 +122,13 @@ const AddFood = () => {
             {/*notes */}
 
             <div className="border-b-2 border-dark2">
-              <input
+              <p className="text-lg text-blue1">Additional Notes</p>
+              <textarea
                 type="text"
                 name="notes"
                 id="notes"
+                defaultValue={notes}
                 required
-                placeholder="Additional Notes"
                 className="focus:outline-none bg-transparent w-full px-4 py-2"
               />
             </div>
@@ -154,7 +138,7 @@ const AddFood = () => {
             <div>
               <input
                 type="submit"
-                value="Add"
+                value="Update"
                 className="btn normal-case lg:col-span-2 text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-4 m-auto"
               />
             </div>
@@ -166,4 +150,4 @@ const AddFood = () => {
   );
 };
 
-export default AddFood;
+export default UpdateFood;

@@ -10,6 +10,7 @@ import ManageMyFoods from "../Pages/ManageMyFoods";
 import MyFoodRequest from "../Pages/MyFoodRequest";
 import PrivateRoutes from "../Routes/PrivateRoute";
 import FoodDetails from "../Pages/FoodDetails";
+import UpdateFood from "../Pages/UpdateFood";
 
 const router = createBrowserRouter([
   {
@@ -46,13 +47,26 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "/updateFood/:id",
+        element: (
+          <PrivateRoutes>
+            <UpdateFood />
+          </PrivateRoutes>
+        ),
+        loader: ({ params }) =>
+          fetch(
+            `https://assignment-11-server-side-chi.vercel.app/food/${params.id}`
+          ),
+      },
+      {
         path: "/manageMyFoods",
         element: (
           <PrivateRoutes>
             <ManageMyFoods />
           </PrivateRoutes>
         ),
-        loader: () => fetch("http://localhost:5000/foods"),
+        loader: () =>
+          fetch("https://assignment-11-server-side-chi.vercel.app/foods"),
       },
       {
         path: "/myFoodRequest",

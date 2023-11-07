@@ -22,7 +22,9 @@ const CancelFood = ({ food, foods, setFoods }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/foods/${_id}`)
+          .delete(
+            `https://assignment-11-server-side-chi.vercel.app/foods/${_id}`
+          )
           .then((response) => {
             if (response.data.deletedCount) {
               Swal.fire("Deleted!", "Request has been deleted.", "success");
@@ -48,7 +50,7 @@ const CancelFood = ({ food, foods, setFoods }) => {
       {/* update action */}
 
       <td className="relative">
-        <Link className="">
+        <Link to={`/updateFood/${_id}`}>
           <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg rounded-full hover:bg-blue1/60 duration-300 p-3">
             <BiSolidPencil />
           </button>
