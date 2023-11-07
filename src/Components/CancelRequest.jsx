@@ -31,7 +31,7 @@ const CancelRequest = ({ food, foods, setFoods }) => {
           )
           .then((response) => {
             if (response.data.deletedCount) {
-              Swal.fire("Deleted!", "Request has been canceled.", "success");
+              Swal.fire("Canceled!", "Request has been canceled.", "success");
               const remaining = foods.filter((food) => food._id !== _id);
               setFoods(remaining);
             }
