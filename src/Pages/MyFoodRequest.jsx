@@ -1,14 +1,24 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import CancelRequest from "../Components/CancelRequest";
 import Lottie from "react-lottie";
 import notFound from "../assets/notFound.json";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const MyFoodRequest = () => {
+  const { user } = useContext(AuthContext);
   const foodRequest = useLoaderData();
-  const [foods, setFoods] = useState(foodRequest);
+  const [foods, setFoods] = useState([]);
+
+  useEffect(() => {
+    const userFoods = foodRequest.filter(
+      (food) => food.userEmail === user.email
+    );
+
+    setFoods(userFoods);
+  }, [foodRequest, user.email]);
 
   const defaultOptions = {
     loop: true,

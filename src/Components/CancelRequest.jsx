@@ -26,7 +26,9 @@ const CancelRequest = ({ food, foods, setFoods }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/foodRequest/${_id}`)
+          .delete(
+            `https://assignment-11-server-side-chi.vercel.app/foodRequest/${_id}`
+          )
           .then((response) => {
             if (response.data.deletedCount) {
               Swal.fire("Deleted!", "Request has been canceled.", "success");
