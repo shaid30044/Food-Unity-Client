@@ -16,9 +16,11 @@ const FoodDetails = () => {
   useEffect(scrollToTop, []);
 
   return (
-    <div>
-      <Navbar />
-      <div className="lg:flex justify-center gap-10 px-4 md:px-10 lg:px-20 py-20 lg:py-40">
+    <div className="relative">
+      <div className="absolute top-0 z-50 w-full">
+        <Navbar />
+      </div>
+      <div className="lg:flex justify-center gap-10 px-4 md:px-10 lg:px-20 pb-20 pt-28 md:pt-36 lg:pt-48 lg:pb-40">
         <img src={image} className="w-full md:w-[500px] rounded-2xl" />
         <div className="relative pb-24 lg:pb-0">
           {/* donor information */}

@@ -12,6 +12,7 @@ import PrivateRoutes from "../Routes/PrivateRoute";
 import FoodDetails from "../Pages/FoodDetails";
 import UpdateFood from "../Pages/UpdateFood";
 import Profile from "../Pages/Profile";
+import Dashboard from "../Pages/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -92,6 +93,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <Profile />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/dashboard",
+        element: (
+          <PrivateRoutes>
+            <Dashboard />
           </PrivateRoutes>
         ),
       },
