@@ -5,6 +5,7 @@ import Foods from "../Components/Foods";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import Slider from "../Components/Slider";
+import Reviews from "../Components/Reviews";
 
 const Home = () => {
   const scrollToTop = () => {
@@ -24,6 +25,7 @@ const Home = () => {
       <Foods />
       <AboutUs />
       <Contact />
+      <Reviews />
       <Footer />
     </div>
   );
