@@ -56,10 +56,10 @@ const ManageFood = ({ food, foods, setFoods }) => {
           onChange={handleStatusChange}
           className="select border-2 border-blue1 w-full max-w-xs"
         >
-          <option value="Pending" disabled selected>
+          <option value="pending" disabled selected>
             {status == "available" ? "pending" : "delivered"}
           </option>
-          <option value="Delivered">delivered</option>
+          <option value="delivered">delivered</option>
         </select>
       </td>
     </tr>

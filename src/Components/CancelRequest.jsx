@@ -66,6 +66,7 @@ const CancelRequest = ({ food, foods, setFoods }) => {
       <td className="relative">
         <button
           onClick={() => handleCancelRequest(_id)}
+          disabled={status === "delivered"}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg rounded-full hover:bg-blue1/60 duration-300 p-3"
         >
           <MdOutlineCancel />
