@@ -10,6 +10,7 @@ import { MdPassword } from "react-icons/md";
 import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { login, googleLogin, githubLogin } = useContext(AuthContext);
@@ -113,6 +114,11 @@ const Login = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity | Login</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="z-999">
         <Navbar />
       </div>

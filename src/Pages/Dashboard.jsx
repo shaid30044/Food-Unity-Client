@@ -6,6 +6,7 @@ import axios from "axios";
 import Lottie from "react-lottie";
 import registrationAnimation from "../assets/registration.json";
 import Statistics from "../Components/Statistics";
+import { Helmet } from "react-helmet";
 
 const Dashboard = () => {
   const { user } = useContext(AuthContext);
@@ -62,9 +63,16 @@ const Dashboard = () => {
   };
 
   return (
-    <div>
-      <Navbar />
-      <div className="lg:flex gap-16 px-4 md:px-10 lg:px-20 py-20">
+    <div className="relative">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity | Dashboard</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
+      <div className="absolute top-0 z-50 w-full">
+        <Navbar />
+      </div>
+      <div className="lg:flex gap-16 px-4 md:px-10 lg:px-20 pb-20 pt-28 md:pt-40">
         <div className="lg:w-2/3 pb-16 lg:pb-0">
           <div className="grid lg:grid-cols-2 items-center border-2 border-blue1 rounded-3xl lg:pl-10 p-6 md:px-14 md:pt-12 lg:px-0 lg:py-0 mb-16">
             <div className="text-4xl md:text-5xl font-bold leading-10 md:leading-[68px] pb-10 lg:pb-0">

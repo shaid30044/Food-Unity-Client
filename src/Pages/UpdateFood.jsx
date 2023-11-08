@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { useLoaderData, useNavigate } from "react-router-dom";
@@ -50,6 +51,11 @@ const UpdateFood = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity | Update Food</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <Navbar />
       <div>
         <div className="px-4 md:px-10 lg:px-20 py-20 lg:py-40">
@@ -121,7 +127,7 @@ const UpdateFood = () => {
 
             {/*notes */}
 
-            <div className="border-b-2 border-dark2">
+            <div className="border-b-2 lg:col-span-2 border-dark2">
               <p className="text-lg text-blue1">Additional Notes</p>
               <textarea
                 type="text"

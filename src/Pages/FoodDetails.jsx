@@ -3,6 +3,7 @@ import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 import RequestModal from "../Components/RequestModal";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 const FoodDetails = () => {
   const food = useLoaderData();
@@ -17,6 +18,11 @@ const FoodDetails = () => {
 
   return (
     <div className="relative">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity | Food Details</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="absolute top-0 z-50 w-full">
         <Navbar />
       </div>

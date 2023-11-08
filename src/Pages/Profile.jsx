@@ -3,6 +3,7 @@ import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { AuthContext } from "../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Profile = () => {
   const { user, updateMyProfile } = useContext(AuthContext);
@@ -44,6 +45,11 @@ const Profile = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity | Profile</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <Navbar />
       <div className="md:flex justify-center gap-8 lg:gap-12 px-4 md:px-10 lg:px-20 py-20 lg:py-40">
         <img src={user.photoURL} className="w-44 md:w-60 rounded-2xl" />

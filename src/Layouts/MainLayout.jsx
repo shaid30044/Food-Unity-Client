@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import Root from "../Root";
-import Error from "../Pages/Error";
 import Home from "../Pages/Home";
 import Login from "../Pages/Login";
 import Registration from "../Pages/Registration";
@@ -13,6 +12,7 @@ import FoodDetails from "../Pages/FoodDetails";
 import UpdateFood from "../Pages/UpdateFood";
 import Profile from "../Pages/Profile";
 import Dashboard from "../Pages/Dashboard";
+import Error from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
   {

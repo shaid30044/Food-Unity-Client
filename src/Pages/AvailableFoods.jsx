@@ -6,6 +6,7 @@ import Loading from "../Components/Loading";
 import AvailableFood from "../Components/AvailableFood";
 import Lottie from "react-lottie";
 import notFound from "../assets/notFound.json";
+import { Helmet } from "react-helmet";
 // import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 const AvailableFoods = () => {
@@ -66,6 +67,11 @@ const AvailableFoods = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity | Available Foods</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <Navbar />
       <div>
         {loading ? (

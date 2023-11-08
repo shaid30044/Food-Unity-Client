@@ -6,6 +6,7 @@ import Lottie from "react-lottie";
 import notFound from "../assets/notFound.json";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const MyFoodRequest = () => {
   const { user } = useContext(AuthContext);
@@ -28,6 +29,11 @@ const MyFoodRequest = () => {
 
   return (
     <div className="relative">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity | My Food Request</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="absolute top-0 w-full z-50">
         <Navbar />
       </div>

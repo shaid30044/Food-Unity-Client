@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar";
 import { useContext, useRef } from "react";
 import axios from "axios";
 import { AuthContext } from "../Providers/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const AddFood = () => {
   const { user } = useContext(AuthContext);
@@ -58,6 +59,11 @@ const AddFood = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity | Add Food</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <Navbar />
       <div>
         <div className="px-4 md:px-10 lg:px-20 py-20 lg:py-40">

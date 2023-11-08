@@ -51,10 +51,11 @@ const CancelRequest = ({ food, foods, setFoods }) => {
       <td>{location}</td>
       <td>{time}</td>
       <td>{requestDate}</td>
-      <td>{donationMoney}</td>
+      <td className="text-center">${donationMoney ? donationMoney : 0}</td>
       <td>{status}</td>
 
       {/* delete action */}
+
       <td className="relative">
         <button
           onClick={() => handleCancelRequest(_id)}

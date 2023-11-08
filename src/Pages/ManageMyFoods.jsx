@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import CancelFood from "../Components/CancelFood";
+import { Helmet } from "react-helmet";
 
 const ManageMyFoods = () => {
   const manageFoods = useLoaderData();
@@ -19,6 +20,11 @@ const ManageMyFoods = () => {
 
   return (
     <div className="relative">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity | Manage My Foods</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="absolute top-0 w-full z-50">
         <Navbar />
       </div>

@@ -6,6 +6,7 @@ import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import Slider from "../Components/Slider";
 import Reviews from "../Components/Reviews";
+import { Helmet } from "react-helmet";
 
 const Home = () => {
   const scrollToTop = () => {
@@ -16,6 +17,11 @@ const Home = () => {
 
   return (
     <div className="relative">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Food Unity</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="absolute w-full z-50">
         <Navbar />
       </div>
