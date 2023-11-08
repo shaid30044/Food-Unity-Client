@@ -137,7 +137,7 @@ const RequestModal = ({ food }) => {
         {/* donator name */}
 
         <div className="border-b-2 border-dark2">
-          <p className="text-lg text-blue1">Donator Email</p>
+          <p className="text-lg text-blue1">Donator Name</p>
           <input
             type="text"
             name="donatorName"

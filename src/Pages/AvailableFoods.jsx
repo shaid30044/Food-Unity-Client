@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
@@ -7,9 +7,11 @@ import AvailableFood from "../Components/AvailableFood";
 import Lottie from "react-lottie";
 import notFound from "../assets/notFound.json";
 import { Helmet } from "react-helmet";
+import { AuthContext } from "../Providers/AuthProvider";
 // import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 const AvailableFoods = () => {
+  const { user } = useContext(AuthContext);
   const [foods, setFoods] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
@@ -18,7 +20,9 @@ const AvailableFoods = () => {
 
   useEffect(() => {
     axios
-      .get(`https://assignment-11-server-side-chi.vercel.app/foods`)
+      .get(
+        `https://assignment-11-server-side-chi.vercel.app/foods?email=${user?.email}`
+      )
       .then((response) => {
         const sortedFoods = response.data.sort((a, b) => {
           const dateA = new Date(a.time);

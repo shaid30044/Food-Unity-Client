@@ -3,12 +3,13 @@ import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const UpdateFood = () => {
   const food = useLoaderData();
   const navigate = useNavigate();
 
-  const { _id, name, image, location, time, notes } = food;
+  const { name, image, location, time, notes } = food;
 
   const handleUpdateFood = async (e) => {
     e.preventDefault();
@@ -28,16 +29,18 @@ const UpdateFood = () => {
       notes,
     };
 
-    fetch(`https://assignment-11-server-side-chi.vercel.app/food/${food._id}`, {
-      method: "PUT",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateFood),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.acknowledged) {
+    axios
+      .put(
+        `https://assignment-11-server-side-chi.vercel.app/food/${food._id}`,
+        updateFood,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        if (response.data.acknowledged) {
           Swal.fire({
             title: "Success!",
             text: "Product updated successfully",
@@ -46,6 +49,9 @@ const UpdateFood = () => {
           });
           navigate(-1);
         }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
       });
   };
 

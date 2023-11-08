@@ -1,10 +1,16 @@
-import axios from "axios";
 import Swal from "sweetalert2";
 import { MdOutlineCancel } from "react-icons/md";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const CancelRequest = ({ food, foods, setFoods }) => {
+  const axiosSecure = UseAxiosSecure();
+  const { user } = useContext(AuthContext);
+
   const {
     _id,
+    name,
     donatorName,
     location,
     time,
@@ -14,6 +20,8 @@ const CancelRequest = ({ food, foods, setFoods }) => {
   } = food;
 
   const count = foods.findIndex((item) => item._id === _id) + 1;
+
+  const url = `/foodRequest/${_id}?email=${user?.email}`;
 
   const handleCancelRequest = (_id) => {
     Swal.fire({
@@ -26,10 +34,8 @@ const CancelRequest = ({ food, foods, setFoods }) => {
       confirmButtonText: "Yes, cancel it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios
-          .delete(
-            `https://assignment-11-server-side-chi.vercel.app/foodRequest/${_id}`
-          )
+        axiosSecure
+          .delete(url)
           .then((response) => {
             if (response.data.deletedCount) {
               Swal.fire("Canceled!", "Request has been canceled.", "success");
@@ -47,9 +53,10 @@ const CancelRequest = ({ food, foods, setFoods }) => {
   return (
     <tr className="font-medium">
       <th>{count}</th>
-      <td>{donatorName}</td>
+      <td>{name}</td>
       <td>{location}</td>
       <td>{time}</td>
+      <td>{donatorName}</td>
       <td>{requestDate}</td>
       <td className="text-center">${donationMoney ? donationMoney : 0}</td>
       <td>{status}</td>

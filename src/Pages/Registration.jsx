@@ -1,7 +1,7 @@
 import Lottie from "react-lottie";
-import registrationAnimation from "../assets/registration.json";
+import registrationAnimation from "../assets/login.json";
 import Navbar from "../Components/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { BiLink, BiUser } from "react-icons/bi";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { HiOutlineMail } from "react-icons/hi";
@@ -11,15 +11,18 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet";
+import Footer from "../Components/Footer";
 
 const Registration = () => {
   const { createUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
+
   const [showPassword, setShowPassword] = useState(false);
   const [registerError, setRegisterError] = useState("");
 
   const defaultOptions = {
-    loop: true,
+    loop: false,
     autoplay: true,
     animationData: registrationAnimation,
   };
@@ -62,7 +65,7 @@ const Registration = () => {
       });
 
       setTimeout(() => {
-        navigate("/");
+        navigate(location?.state ? location.state : "/");
       }, 1000);
     } catch (error) {
       setRegisterError(error.message);
@@ -70,24 +73,24 @@ const Registration = () => {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   return (
-    <div>
+    <div className="relative">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Food Unity | Registration</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <div>
+      <div className="absolute top-0 z-50 w-full">
         <Navbar />
       </div>
-      <div className="flex flex-col justify-center py-10">
+      <div className="flex flex-col justify-center pb-20 pt-20 md:pt-28 lg:pt-40">
         <div className="lg:grid lg:grid-cols-2 justify-center items-center gap-4 px-4 md:px-10 lg:px-32">
           {/* lottie animation */}
 
-          <div className="hidden lg:flex flex-col items-center">
+          <div className="flex flex-col items-center">
             <Lottie options={defaultOptions} />
             <div>
               <Link
@@ -100,7 +103,7 @@ const Registration = () => {
           </div>
           {/* login form */}
 
-          <div>
+          <div className="pt-20 lg:pt-0">
             <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
               Registration
             </span>
@@ -178,7 +181,7 @@ const Registration = () => {
 
               <input
                 type="submit"
-                value="Submit"
+                value="Register"
                 className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-10"
               />
             </form>
@@ -197,10 +200,11 @@ const Registration = () => {
             onClick={handleBack}
             className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-4 lg:mt-10"
           >
-            Back
+            Go Home
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

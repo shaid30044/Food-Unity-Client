@@ -1,7 +1,7 @@
 import Lottie from "react-lottie";
-import loginAnimation from "../assets/login.json";
+import loginAnimation from "../assets/registration.json";
 import Navbar from "../Components/Navbar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { FaSquareGithub } from "react-icons/fa6";
 import { ImGoogle2 } from "react-icons/im";
@@ -11,16 +11,18 @@ import { useContext, useState } from "react";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Helmet } from "react-helmet";
+import Footer from "../Components/Footer";
 
 const Login = () => {
   const { login, googleLogin, githubLogin } = useContext(AuthContext);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const [showPassword, setShowPassword] = useState(false);
   const [loginError, setLoginError] = useState("");
 
   const defaultOptions = {
-    loop: false,
+    loop: true,
     autoplay: true,
     animationData: loginAnimation,
   };
@@ -80,7 +82,7 @@ const Login = () => {
           confirmButtonText: "Cool",
         });
         setTimeout(() => {
-          navigate("/");
+          navigate(location?.state ? location.state : "/");
         }, 1000);
         console.log(res.user);
       })
@@ -99,7 +101,7 @@ const Login = () => {
           confirmButtonText: "Cool",
         });
         setTimeout(() => {
-          navigate("/");
+          navigate(location?.state ? location.state : "/");
         }, 1000);
         console.log(res.user);
       })
@@ -109,24 +111,24 @@ const Login = () => {
   };
 
   const handleBack = () => {
-    navigate(-1);
+    navigate("/");
   };
 
   return (
-    <div>
+    <div className="relative">
       <Helmet>
         <meta charSet="utf-8" />
         <title>Food Unity | Login</title>
         <link rel="canonical" href="http://mysite.com/example" />
       </Helmet>
-      <div className="z-999">
+      <div className="absolute top-0 z-50 w-full">
         <Navbar />
       </div>
-      <div className="flex flex-col justify-center h-[90vh]">
+      <div className="flex flex-col justify-center pb-20 pt-20 md:pt-28 lg:pt-40">
         <div className="lg:grid lg:grid-cols-2 justify-center items-center gap-4 px-4 md:px-10 lg:px-32">
           {/* lottie animation */}
 
-          <div className="hidden lg:flex flex-col items-center z-10">
+          <div className="flex flex-col items-center z-10">
             <Lottie options={defaultOptions} />
             <div>
               <Link
@@ -139,7 +141,7 @@ const Login = () => {
           </div>
           {/* login form */}
 
-          <div>
+          <div className="pt-20 lg:pt-0">
             <span className="text-4xl font-bold border-b-8 border-blue1 pb-2">
               Log In
             </span>
@@ -189,7 +191,7 @@ const Login = () => {
 
               <input
                 type="submit"
-                value="Submit"
+                value="Login"
                 className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-20"
               />
             </form>
@@ -224,10 +226,11 @@ const Login = () => {
             onClick={handleBack}
             className="btn normal-case text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent duration-300 px-10 mt-10 lg:mt-0 lg:mb-20"
           >
-            Back
+            Go Home
           </button>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };

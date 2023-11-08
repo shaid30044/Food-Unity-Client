@@ -4,22 +4,20 @@ import Navbar from "../Components/Navbar";
 import CancelRequest from "../Components/CancelRequest";
 import Lottie from "react-lottie";
 import notFound from "../assets/notFound.json";
-import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { Helmet } from "react-helmet";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 
 const MyFoodRequest = () => {
   const { user } = useContext(AuthContext);
-  const foodRequest = useLoaderData();
+  const axiosSecure = UseAxiosSecure();
   const [foods, setFoods] = useState([]);
 
-  useEffect(() => {
-    const userFoods = foodRequest.filter(
-      (food) => food.userEmail === user.email
-    );
+  const url = `/foodRequest?email=${user?.email}`;
 
-    setFoods(userFoods);
-  }, [foodRequest, user.email]);
+  useEffect(() => {
+    axiosSecure.get(url).then((res) => setFoods(res.data));
+  }, [axiosSecure, url]);
 
   const defaultOptions = {
     loop: true,
@@ -55,6 +53,7 @@ const MyFoodRequest = () => {
               <tr>
                 <th></th>
                 <td>Donator Name</td>
+                <td>Food Name</td>
                 <td>Pickup Location</td>
                 <td>Expired Date</td>
                 <td>Request Date</td>

@@ -1,22 +1,25 @@
-import { useLoaderData } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import CancelFood from "../Components/CancelFood";
 import { Helmet } from "react-helmet";
+import UseAxiosSecure from "../Hooks/UseAxiosSecure";
 
 const ManageMyFoods = () => {
-  const manageFoods = useLoaderData();
+  const axiosSecure = UseAxiosSecure();
   const { user } = useContext(AuthContext);
+  const [userFoods, setUserFoods] = useState([]);
   const [foods, setFoods] = useState([]);
 
+  const url = `/foods?email=${user?.email}`;
+
   useEffect(() => {
-    const userFoods = manageFoods.filter(
-      (food) => food.userEmail === user.email
-    );
-    setFoods(userFoods);
-  }, [manageFoods, user.email]);
+    axiosSecure.get(url).then((res) => setUserFoods(res.data));
+
+    const userFood = userFoods.filter((food) => food.userEmail === user.email);
+    setFoods(userFood);
+  }, [userFoods, user.email, axiosSecure, url]);
 
   return (
     <div className="relative">

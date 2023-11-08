@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import auth from "../Firebase/firebase.config";
 import PropTypes from "prop-types";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -21,14 +22,44 @@ const AuthProvider = ({ children }) => {
   const githubProvider = new GithubAuthProvider();
 
   useEffect(() => {
-    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
       setUser(currentUser);
+      console.log("current user", currentUser);
       setLoading(false);
+
+      if (currentUser) {
+        axios
+          .post(
+            "https://assignment-11-server-side-chi.vercel.app/jwt",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log("token response", res.data);
+          });
+      } else {
+        axios
+          .post(
+            "https://assignment-11-server-side-chi.vercel.app/logout",
+            loggedUser,
+            {
+              withCredentials: true,
+            }
+          )
+          .then((res) => {
+            console.log(res.data);
+          });
+      }
     });
+
     return () => {
-      unSubscribe();
+      return unsubscribe();
     };
-  }, []);
+  }, [user?.email]);
 
   const createUser = (email, password) => {
     setLoading(true);
