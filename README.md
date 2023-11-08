@@ -1,8 +1,13 @@
-# React + Vite
+• User can deliver the requested food to the Requester.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+• User can update his/her food information.
 
-Currently, two official plugins are available:
+• User can donate his leftover good food.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+• User can request to collect any food.
+
+• User can update his/her profile.
+
+• Users can monitor their activities on the dashboard.
+
+website live link: https://assignment-11-6cede.web.app
