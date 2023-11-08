@@ -8,7 +8,6 @@ import Lottie from "react-lottie";
 import notFound from "../assets/notFound.json";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../Providers/AuthProvider";
-// import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
 const AvailableFoods = () => {
   const { user } = useContext(AuthContext);
