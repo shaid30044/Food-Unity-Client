@@ -5,6 +5,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import CancelFood from "../Components/CancelFood";
 import { Helmet } from "react-helmet";
 import UseAxiosSecure from "../Hooks/UseAxiosSecure";
+import { Link } from "react-router-dom";
 
 const ManageMyFoods = () => {
   const axiosSecure = UseAxiosSecure();
@@ -31,10 +32,13 @@ const ManageMyFoods = () => {
       <div className="absolute top-0 w-full z-50">
         <Navbar />
       </div>
-      <div className="overflow-x-auto mx-4 md:mx-10 lg:mx-20 pt-32 md:pt-40 mb-20">
+      <div className="relative overflow-x-auto mx-4 md:mx-10 lg:mx-20 pt-32 md:pt-40">
         <span className=" sticky left-0 text-4xl font-bold border-b-8 border-blue1 pb-2">
           Manage My Food
         </span>
+
+        {/* my food table */}
+
         <table className="table table-md lg:table-lg table-pin-rows table-pin-cols mt-20">
           <thead className="text-[17px]">
             <tr>
@@ -45,7 +49,6 @@ const ManageMyFoods = () => {
               <td>Status</td>
               <td className="text-center">Update</td>
               <td className="text-center">Delete</td>
-              <td className="text-center">Manage</td>
               <th></th>
             </tr>
           </thead>
@@ -60,6 +63,15 @@ const ManageMyFoods = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="px-4 md:px-10 lg:px-20 pt-12 pb-16">
+        {/* manage action */}
+
+        <Link to={"/manageFood"} className="">
+          <button className="btn normal-case lg:col-span-2 text-lg font-medium border-2 border-blue1 hover:border-blue1 text-blue1 bg-transparent hover:bg-transparent px-10 mt-4 m-auto">
+            Manage
+          </button>
+        </Link>
       </div>
       <Footer />
     </div>

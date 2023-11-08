@@ -26,7 +26,6 @@ const AuthProvider = ({ children }) => {
       const userEmail = currentUser?.email || user?.email;
       const loggedUser = { email: userEmail };
       setUser(currentUser);
-      console.log("current user", currentUser);
       setLoading(false);
 
       if (currentUser) {
@@ -38,9 +37,7 @@ const AuthProvider = ({ children }) => {
               withCredentials: true,
             }
           )
-          .then((res) => {
-            console.log("token response", res.data);
-          });
+          .then((res) => {});
       } else {
         axios
           .post(

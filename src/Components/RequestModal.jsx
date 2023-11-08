@@ -45,6 +45,8 @@ const RequestModal = ({ food }) => {
       requestDate: form.get("requestDate"),
       donationMoney: form.get("donationMoney"),
       status: status,
+      userName: user.displayName,
+      userImage: user.photoURL,
     };
 
     const modal = document.getElementById("modal");

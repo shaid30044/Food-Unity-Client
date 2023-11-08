@@ -13,6 +13,7 @@ import UpdateFood from "../Pages/UpdateFood";
 import Profile from "../Pages/Profile";
 import Dashboard from "../Pages/Dashboard";
 import Error from "../Pages/ErrorPage";
+import FoodManagement from "../Pages/FoodManagement";
 
 const router = createBrowserRouter([
   {
@@ -65,6 +66,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRoutes>
             <ManageMyFoods />
+          </PrivateRoutes>
+        ),
+      },
+      {
+        path: "/manageFood",
+        element: (
+          <PrivateRoutes>
+            <FoodManagement />
           </PrivateRoutes>
         ),
       },

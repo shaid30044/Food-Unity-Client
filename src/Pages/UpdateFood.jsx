@@ -40,6 +40,7 @@ const UpdateFood = () => {
         }
       )
       .then((response) => {
+        console.log(response);
         if (response.data.acknowledged) {
           Swal.fire({
             title: "Success!",

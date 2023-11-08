@@ -1,7 +1,6 @@
 import Swal from "sweetalert2";
 import { BiSolidPencil } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
-import { RiSettings3Fill } from "react-icons/ri";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -66,16 +65,6 @@ const CancelFood = ({ food, foods, setFoods }) => {
         >
           <MdDelete />
         </button>
-      </td>
-
-      {/* manage action */}
-
-      <td className="relative">
-        <Link className="">
-          <button className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-lg rounded-full hover:bg-blue1/60 duration-300 p-3">
-            <RiSettings3Fill />
-          </button>
-        </Link>
       </td>
     </tr>
   );

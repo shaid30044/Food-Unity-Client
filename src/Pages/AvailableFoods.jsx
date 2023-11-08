@@ -33,7 +33,7 @@ const AvailableFoods = () => {
         setLoading(false);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [user?.email]);
 
   const scrollToTop = () => {
     window.scrollTo(0, 0);
