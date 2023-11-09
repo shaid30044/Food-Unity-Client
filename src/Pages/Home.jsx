@@ -4,9 +4,9 @@ import Contact from "../Components/Contact";
 import Foods from "../Components/Foods";
 import Footer from "../Components/Footer";
 import Navbar from "../Components/Navbar";
-import Slider from "../Components/Slider";
 import Reviews from "../Components/Reviews";
 import { Helmet } from "react-helmet";
+import Sliders from "../Components/Sliders";
 
 const Home = () => {
   const scrollToTop = () => {
@@ -26,7 +26,7 @@ const Home = () => {
         <Navbar />
       </div>
       <div className="pt-12 md:pt-16">
-        <Slider />
+        <Sliders />
       </div>
       <Foods />
       <AboutUs />

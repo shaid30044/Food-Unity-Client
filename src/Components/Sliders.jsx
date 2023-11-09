@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { FaCircle } from "react-icons/fa";
+import Carousel from "react-elastic-carousel";
 
-const Slider = () => {
+const Sliders = () => {
   const [slides, setSlides] = useState([]);
   const [activeSlide, setActiveSlide] = useState(0);
 
@@ -19,8 +19,8 @@ const Slider = () => {
   }, []);
 
   return (
-    <div className="relative">
-      <div className="carousel w-full">
+    <div>
+      <Carousel enableAutoPlay autoPlaySpeed={3000}>
         {slides.map((slide, idx) => (
           <div
             key={slide.id}
@@ -45,22 +45,9 @@ const Slider = () => {
             </div>
           </div>
         ))}
-      </div>
-      <div className="absolute bottom-2 lg:bottom-4 flex justify-center w-full py-2 gap-2">
-        {slides.map((slide, index) => (
-          <a
-            key={slide.id}
-            href={`#slide${index}`}
-            className={`text-[8px] md:text-[10px] text-white/50 ${
-              index === activeSlide ? "active" : ""
-            }`}
-          >
-            <FaCircle />
-          </a>
-        ))}
-      </div>
+      </Carousel>
     </div>
   );
 };
 
-export default Slider;
+export default Sliders;
