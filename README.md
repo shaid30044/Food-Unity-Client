@@ -38,6 +38,6 @@
 
 - A comprehensive dashboard allowing admins to manage and control all activities on the platform.
 
-Technologies: React, JacaScript, Tailwind CSS, Daisy UI, Firebase, Node.js, Express.js, MongoDB, JWT
+Technologies: React, JavaScript, Tailwind CSS, Daisy UI, Firebase, Node.js, Express.js, MongoDB, JWT
 
 website live link: https://assignment-11-6cede.web.app
