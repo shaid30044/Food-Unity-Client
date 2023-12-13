@@ -6,8 +6,6 @@
 
 - Informative footer on all pages, including the website logo, copyright notice, contact information, social media links, and address.
 
-- Users have the option to choose from design libraries like Flowbite, Mamba UI, Preline, Chakra UI for a customized design.
-
 - A visually appealing banner/slider on the homepage.
 
 - Display of at least 6 food items on the homepage with details such as images, donator information, quantity, pickup location, etc.
